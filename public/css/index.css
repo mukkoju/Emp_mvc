@@ -1,0 +1,39 @@
+body{
+    background-image: url("https://localhost:8811/images/sav.jpg");
+    background-size: 1300px, 1500px;
+}
+
+#table{
+    padding-top: 40px;
+    padding-left: 450px;
+
+}
+
+
+.box{
+    padding-top: 20px;
+    padding-left: 50px;
+    width: 300px;
+    height: auto;
+    box-sizing: border-box;
+    background-color: white;
+    box-shadow: 10px 10px 10px #red;
+    border-radius: 25px;
+}
+
+.login{
+    padding-bottom: 20px;
+    font-size: x-large;
+    font-family: Georgia;
+    padding-left: 40px;
+    color:#2E8AE6;
+}
+
+.tab-content {
+ overflow: visible !important;
+}
+.label {
+display: block!important;
+margin-bottom: 0x;
+font-weight: normal 1important;
+}
