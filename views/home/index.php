@@ -103,73 +103,31 @@ require 'views/header.php';
             <div class="slide_left">
                 <div class="user_details">
                 
-                <label>Acc no</label>
-                <input name="emp_name" type="text" style="height: 30px; width: 250px;" placeholder="Name"/>
+                <label>Bank Acc no</label>
+                <input name="bank_acc" type="number" style="height: 30px; width: 250px;" placeholder="Bank Acc no"/>
                                 <br>
-                <label>pan no</label>
-                <input name="emp_id" type="text" style="height: 30px; width: 250px;" placeholder="Emp id"/>
+                <label>PF ACC no</label>
+                <input name="pf_acc" type="number" style="height: 30px; width: 250px;" placeholder="PF ACC no"/>
                                 <br>
 
-                <label>pf no</label>
-                <input name="emp_email" type="email" style="height: 30px; width: 250px;" placeholder="Email"/>
+                <label>PAN</label>
+                <input name="pan" type="number" style="height: 30px; width: 250px;" placeholder="PAN"/>
                 <br>
-                <label>details</label>
-                <input name="password" type="password" style="height: 30px; width: 250px;" placeholder="password"/>
+                <label>Bank IFSC code</label>
+                <input name="ifsc" type="text" style="height: 30px; width: 250px;" placeholder="Bank IFSC code"/>
                 <br>
-                <label>Fathername</label>
-                <input name="fathername" type="text" style="height: 30px; width: 250px;" placeholder="fathername"/>
+                <label>Basic Salari</label>
+                <input name="basic_sal" type="number" style="height: 30px; width: 250px;" placeholder="Basic Salari"/>
                 <br>
-
-                <label>Mothername</label>
-                <input name="mothername" type="text" style="height: 30px; width: 250px;" placeholder="mothername"/>
-                <br>
-                <label>Gender</label>
-                Male: <input name="gender" type="radio" value="Male" style="height: 15px; width: 15px;"> &nbsp;&nbsp;&nbsp;Female: <input name="gender" value="Female" type="radio" style="height: 15px; width: 15px;">
-                <br><br/>
+<!--                <label>Documents uploads</label>
+                <input name="doc" type="file" style="height: 30px; width: 250px;" placeholder="doc"/>
+                <br>-->
             </div>
             <div class="emr_details">
-                <label>Phone no</label>
-                <input name="emp_phno" type="text" style="height: 30px; width: 250px;" placeholder="+9199948983078"/>
-                <br>
-                <label>DOB</label>
-                <input name="dob" type="date" style="height: 30px; width: 250px;" placeholder="date of birth"/>
-                <br>
-                <label>Age</label>
-                <input name="age" type="text" style="height: 30px; width: 250px;" placeholder="Age"/>
-                <br>
-
-                <label>Bloodgroup</label>
-                <input name="bloodgroup" type="text" style="height: 30px; width: 250px;" placeholder="Blood group"/>
-                <br>
-                <label>Address</label>
-                <textarea  name="address" cols="5" rows="3" style=" height: 90px; width: 250px;"></textarea>
-                <br>
-
-                <label>Spouse</label>
-                <input name="spousename" type="text" style="height: 30px; width: 250px;" placeholder="If not married type unmarried"/>
-                <br>
+                
             </div>
             <div class="emr_details">
-                <label>Designation</label>
-                <input name="designation" type="text" style="height: 30px; width: 250px;" placeholder="Role"/>
-                <br>
-
-                <label>Department</label>
-                <input name="department" type="text" style="height: 30px; width: 250px;" placeholder="Department"/>
-                <br>
-
-                <h5>Emergency contact details</h5>
-                <label>Name</label>
-                <input name="emr_name" type="text" style="height: 30px; width: 250px;"/>
-                <br>
-                <label>Relation</label>
-                <input name="emr_relation" type="text" style="height: 30px; width: 250px;" placeholder="Relation with emp"/>
-                <br>
-                <label>Ph no</label>
-                <input name="emr_phone" type="text" style="height: 30px; width: 250px;" placeholder="Ph no"/>
-                <br>
-                <label>Email</label>
-                <input name="emr_email" type="text" style="height: 30px; width: 250px;" placeholder="Email"/>
+               
             </div>
                 <div class="action_btns">
                 
@@ -203,7 +161,6 @@ require 'views/header.php';
                         <td width="100px" align="center"><?php echo $row[$i]['apply_date']; ?></td>
                         <td width="100px" align="center"><?php echo $row[$i]['manager_status']; ?></td>
                         <td width="100px" align="center"><?php echo $row[$i]['status']; ?></td>
-
                     </tr>
 
 
@@ -395,6 +352,12 @@ require 'views/header.php';
                 "emr_relation": regform.elements['emr_relation'].value,
                 "emr_phone": regform.elements['emr_phone'].value,
                 "emr_email": regform.elements['emr_email'].value,
+                "bank_acc": regform.elements['bank_acc'].value,
+                "pf_acc": regform.elements['pf_acc'].value,
+                "pan": regform.elements['pan'].value,
+                "ifsc": regform.elements['ifsc'].value,
+                "basic_sal": regform.elements['basic_sal'].value,
+                "doc": regform.elements['doc'].value,
             },
             
             success: function (res) {

@@ -41,4 +41,8 @@ public function pdf(){
     echo $this->model->mpdf($_SESSION['loggedIn']);
 }
 
+public function due_deatils(){
+    echo json_encode($this->model->paid_deatils($_SESSION['loggedIn']));
+}
+
 }

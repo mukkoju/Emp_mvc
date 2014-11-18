@@ -40,5 +40,7 @@ class Global_model extends Model {
         return $result;
         
     }
+    
+   
 }
 

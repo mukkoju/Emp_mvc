@@ -14,6 +14,8 @@
             <th>Upload Payslip</th>
         </tr>
         <tr>
+            <?php $hai = $this->due_deatils;
+            var_dump($hai);?>
             <?php $row = $this->all_user_details; ?>
             <?php for ($i = 0; $i < sizeof($row); $i++) { ?>
                 <td align="center"><?php echo $row[$i]['emp_name']; ?></td>
