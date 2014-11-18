@@ -5,7 +5,6 @@
         function __construct() {
             parent::__construct();
         }
-
         public function getUserDetails($em) {
             $sth = $this->db->prepare("SELECT * FROM user WHERE email = :email");
             $sth->execute(array(
@@ -190,23 +189,31 @@
 
                 if (!file_exists($folder)) {
                     mkdir($folder, 0777);
-                    echo "Directory sucs";
+                    // echo "Directory sucs";
                 } else {
-                    echo "Directory creation faild";
+                    // echo "Directory creation faild";
                 }
                 $final = "$folder/$file_name";
                 $mpdf->output($final, 'F');
-                $month_slip = $post[$i]['month_slip'];
+                $month_slip = trim($post[$i]['month_slip']);
                 $year_slip = $post[$i]['year_slip'];
-                echo $payslip_month_y = strtotime("$month_slip $year_slip");
+                 
+                 $payslip_month_y = strtotime("1 $month_slip $year_slip");
+                 
+                 $d = new DateTime();
 
-                $sth11 = $this->db->prepare("INSERT INTO slips(email, slip, month_of_payslip) VALUES (:useremail, :slip_name, :payslip_month_year)");
+                $d->setTimestamp($payslip_month_y);
+                $d->format('U = Y-m-d H:i:s') . "\n";
+                
+
+                $sth11 = $this->db->prepare("INSERT INTO slips(email, slip, month_of_payslip, time) VALUES (:useremail, :slip_name, :payslip_month_year, :time)");
                 $insert = $sth11->execute(array(':slip_name' => $post[$i]['file_name'],
                     ':useremail' => $email,
-                    ':payslip_month_year' => $payslip_month_y));
+                    ':payslip_month_year' => "$month_slip$year_slip", 
+                     ':time'=> strtotime("now")));
             }
             if ($insert == true) {
-                $status = "Pay slip genrated and its uploded to employee desk";
+                $status = "Pay slip(s) genrated and its uploded to employee(s) desk";
                 return $status;
             } else {
                 $status = "Somthing wrong While uploading a pay slip";
@@ -217,12 +224,18 @@
         public function paid_deatils($em) {
             $year = $_POST['year'];
             $month = $_POST['month'];
-            $payslip_month_y = strtotime("november $year");
-            $sth_paid_deatils = $this->db->prepare("SELECT * FROM new_emp WHERE emp_email NOT IN (SELECT email FROM slips WHERE month_of_payslip = '5094000')");
-            $insert = $sth_paid_deatils->execute();
+            $payslip_month_y = strtotime("1 $month $year");
+            $d = new DateTime();
+
+                $d->setTimestamp($payslip_month_y);
+                $d->format('U = Y-m-d H:i:s') . "\n";
+            $sth_paid_deatils = $this->db->prepare("SELECT * FROM new_emp WHERE emp_email NOT IN (SELECT email FROM slips WHERE month_of_payslip = :payslip_month_y)");
+            $insert = $sth_paid_deatils->execute(array(':payslip_month_y' => "$month$year"));
             $res = $sth_paid_deatils->fetchAll(PDO::FETCH_ASSOC);
+        
             //$result = print_r($res);
-            return $res;
+            // return $payslip_month_y;
+             return $res;
 
             // array('payslip_date:'=> $_POST['month'].$_POST['year'])
         }

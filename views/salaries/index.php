@@ -45,7 +45,7 @@ FB.getLoginStatus(function(response) {
     <select id="slct-year"></select>
     <select id='slct-month'>
     <option value=''>--Select Month--</option>
-    <option value="1">Janaury</option>
+    <option value="1" selected>January</option>
     <option value="2">February</option>
     <option value="3">March</option>
     <option value="4">April</option>
@@ -58,6 +58,7 @@ FB.getLoginStatus(function(response) {
     <option value="11">November</option>
     <option value="12">December</option>
     </select><br><br>
+    <h4 id="empty" style="display: none"></h4>
     <h4 id="selct-mnth-prcd"></h4>
     <table class="table table-hover table-bordered" id="table1">
         <tr><th>Select</th>
@@ -106,9 +107,41 @@ FB.getLoginStatus(function(response) {
 </table>
     <input type="button" id="process" class="btn btn-info" value="Process"name="textarea_hidden" style="color: black;">
 </div>
-<div style="float: left">
-<!-- <ol id="addhereform">
-<li></li>
-</ol>-->
+<!--<div style="float: left">
+ <ol id="addhereform">
+     <li><?php // echo strtotime("1 January 2014")?> <?php // echo strtotime("1 January 2014")?></li>
+</ol>
+</div>-->
+
+<!--<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=371390049680975&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+document.getElementById('login-btn').onclick = function() {
+  FB.login(function(response) {
+    Log.info('FB.login response', response);
+  }, {scope: 'user_friends, publish_actions'});
+  return false;
+}
+</script>
+<div class="fb-login-button" data-scope="user_friends, publish_actions" data-max-rows="1" data-size="medium"></div>
+-->
+
+<div class="ajax-loading"></div>
+<a id= "btn-trgr" href="#resp-popup" class="modal_trigger_status" hidden></a>
+<div id="resp-popup" class="popupContainer_status" style="display:none;">
+            <header class="popupHeader7">
+                <span class="header_title"></span>
+                <span class="modal_close"></span>
+            </header>
+    <section class="popupBody"></section>
 </div>
+<script>
+$(".modal_trigger_status").leanModal({top: 150, overlay: 0.2, closeButton: ".modal_close"});
+</script>
 <?php require 'views/footer.php'; ?>
