@@ -19,63 +19,246 @@
         <script type="text/javascript" src="<?php echo URL; ?>public/global/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo URL; ?>public/global/bootstrap/js/jquery-ui.js"></script>
         <script type="text/javascript" src="<?php echo URL; ?>public/global/bootstrap/js/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="<?php echo URL; ?>public/js/view.js"></script>
+
     </head>
-
     <body>
-        <div id="header">
-            <nav class="navbar navbar-default navbar- nav" role="navigation">
-                <div class="container">
+        <header>
 
+            <a href="/home/index" id="logo"></a>
 
-                    <ul class="nav navbar-nav mainmenu">
-                        <li style="padding-top: 10px; padding-right: 10px" ><span><a href="/home/index"><img src="/images/logo.png" style="max-width: 130px;"></a></span></li>
-                        <li class=""><a href="../home"><font color="white">Home</font></a></li>
-                        <li class=""><a href="" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow"><font color="white">HR</font><i class="icon-chevron-down"></i></a>
+            <nav>
+                <a href="#" id="menu-icon"></a>
+                <!--          Hidden desktop menu-->
+                <ul class="hidden-desktop" style="float: right;">
+                    <li class="dropdown hidn-dsktp-mnu pull-right"><a href="" id="dLabel" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" rel="nofollow"><i class="icon-navicon"></i></a>
+                        <ul class="dropdown-menu hr-dropdwn" role="menu" aria-labelledby="dLabel">
+                            <li class="dropdown"><a href="/home" class="current">Home</a></li>
+                            <li class="dropdown"><a href="/leaves">Leaves</a></li>
+                            <li class="dropdown"><a href="/download">Downloads</a></li>
+                            <li class="dropdown-submenu"><a href="" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" rel="nofollow">HR</a>
+                                <ul class="dropdown-menu hr-dropdwn pull-right" role="menu" aria-labelledby="dLabel">
+                                    <li class="dropdown"><a href="/salaries">Salaries</a></li>
+                                    <li class="dropdown"><a href="#model_reg" class="modal_trigger6">New Emp</a></li>
+                                    <li class="dropdown"><a href="#model_reg" class="modal_trigger6">Employe Docs</a></li>
+                                    <li class="dropdown"><a href="/home/logout">Exit Settlement</a></li>
+                                    <li class="dropdown"><a href="/emp_data">All Emp</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="/home/logout">Logout</a></li>
+                            <li class="usr-pic-name-hdr dropdown"><a href="#model" id="modal_trigger1">
+                                    <?php $email = $this->user_details[0]['emp_email']; ?>
+                                    <?php $profile = "/uploads/$email/profile.jpg"; ?>
+                                    <?php if (!file_exists("$profile")) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/uploads/<?php echo $this->user_details[0]['emp_email']; ?>/profile.jpg' class="profile-avtr"><?php } ?> <?php echo $this->user_details[0]['emp_name']; ?></a>
+                                <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow"><span class="caret"></span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--          Hidden phone menu-->
+                <ul class="hidden-phone">
+                    <li><a href="/home" class="current">Home</a></li>
+                    <li><a href="/leaves">Leaves</a></li>
+                    <li><a href="/download">Downloads</a></li>
+                    <li class="dropdown"><a href="" id="dLabel" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" rel="nofollow">HR<span class="caret"></span></a>
+                        <ul class="dropdown-menu hr-dropdwn" role="menu" aria-labelledby="dLabel">
+                            <li class="dropdown"><a href="/salaries">Salaries</a></li>
+                            <li class="dropdown"><a href="#model_reg" class="modal_trigger6">New Emp</a></li>
+                            <li class="dropdown"><a href="#model_reg" class="modal_trigger6">Employe Docs</a></li>
+                            <li class="dropdown"><a href="/home/logout">Exit Settlement</a></li>
+                            <li class="dropdown"><a href="/emp_data">All Emp</a></li>
+                        </ul>
+                    </li>
+                    <li class="usr-pic-name-hdr hidden-phone dropdown"><a href="#model" id="modal_trigger1">
+                            <?php $email = $this->user_details[0]['emp_email']; ?>
+                            <?php $profile = "/uploads/$email/profile.jpg"; ?>
+                            <?php if (!file_exists("$profile")) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/uploads/<?php echo $this->user_details[0]['emp_email']; ?>/profile.jpg' class="profile-avtr"><?php } ?> <?php echo $this->user_details[0]['emp_name']; ?></a>
+                        <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow"><span class="caret"></span></a>
                         <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
-                                <li class="dropdown"><a href="/home/logout">Leaves</a></li>
-                                <li class="dropdown"><a href="/salaries">Salaries</a></li>
-                                <li class="dropdown"><a href="/home/logout">Exit Settlement</a></li>
-                            </ul>
-                        </li>
-                        <li class="" ><a href="../leaves"><font color="white">Leaves</font></a></li>
-                        <li class="" ><a href="../download"><font color="white">Downloads</font></a></li>
-                        
-                        <li class="navbar-right"><a href="#model" id="modal_trigger1"><img src="/images/user.svg" style="height:35px; width:35px;"> <font color="white"><?php echo $this->user_details[0]['emp_name']; ?></font></a></li>
-                        <li><a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow">
-                                <span class="caret"></span></a>
-                            <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
-                                <li class="dropdown"><a href="/home/logout">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                            <li class="dropdown"><a href="/home/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </nav>
-        </div>
+        </header>
+
+
+
+
+        <!--        <div id="header">
+                    <nav class="navbar navbar-default navbar- nav" role="navigation">
+                        <div class="container">
+                            <ul class="nav navbar-nav mainmenu">
+                                <li style="padding-top: 10px; padding-right: 10px" ><span><a href="/home/index"><img src="/images/logo.png" style="max-width: 130px;"></a></span></li>
+                                <li class=""><a href="../home"><font color="white">Home</font></a></li>
+                                <li class=""><a href="" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow"><font color="white">HR</font><i class="icon-chevron-down"></i></a>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                    <li class="dropdown"><a href="/salaries">Salaries</a></li>
+                                    <li class="dropdown"><a href="#model_reg" class="modal_trigger6">New Emp</a></li>
+                                    <li class="dropdown"><a href="#model_reg" class="modal_trigger6">Employe Docs</a></li>
+                                    <li class="dropdown"><a href="/home/logout">Exit Settlement</a></li>
+                                    <li class="dropdown"><a href="/emp_data">All Emp</a></li>
+                                    </ul>
+                                </li>
+                                <li class="" ><a href="../leaves"><font color="white">Leaves</font></a></li>
+                                <li class="" ><a href="../download"><font color="white">Downloads</font></a></li>
+                                
+                                <li class="navbar-right"><a href="#model" id="modal_trigger1">
+        <?php $email = $this->user_details[0]['emp_email']; ?>
+        <?php $profile = "/uploads/$email/profile.jpg"; ?>
+        <?php if (!file_exists("$profile")) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/uploads/<?php echo $this->user_details[0]['emp_email']; ?>/profile.jpg' class="profile-avtr"><?php } ?> <font color="white"><?php echo $this->user_details[0]['emp_name']; ?></font></a></li>
+                                <li><a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow">
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+                                        <li class="dropdown"><a href="/home/logout">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>-->
         <div id="model" class="popupContainer1 pop_cont" style="display:none;">
             <header class="popupHeader6">
                 <span class="header_title">Look at your Profile</span>
                 <span class="modal_close"></span>
+                <!--</header>-->
+
+                <section class="popupBody">
+                    <div class="profile_img">
+                        <?php if (file_exists("$profile")) { ?>
+                            <img height="900px" width="250px" src="$profile"/>
+                        <?php } else { ?>
+                            <img height="900px" width="250px" src="/images/avtr.jpg"/>
+                        <?php } ?>
+                    </div>
+                    <div class="profile"><h4><img height="60px" width="30px" src="/images/king.png"/>&nbsp;<?php echo $this->user_details[0]['emp_name']; ?></h4>
+                        <p>Email:<span style="padding-left: 50px"><?php echo $this->user_details[0]['emp_email']; ?></span></p>
+                        <p>EmployeeID:<span style="padding-left: 10px" ><?php echo $this->user_details[0]['emp_id']; ?></span></p>
+                        <p>Address:<span style="padding-left: 35px" ><?php echo $this->user_details[0]['address']; ?></span>sp</p>
+                        <p>Ph no:<span style="padding-left: 50px" ><?php echo $this->user_details[0]['phone_no']; ?></span></p>
+                        <p>Designation:<span style="padding-left: 10px" ><?php echo $this->user_details[0]['designation']; ?></span></p>
+                        <p>Age:<span style="padding-left: 60px" ><?php echo $this->user_details[0]['age']; ?></span></p>
+                        <p>Gender:<span style="padding-left: 39px"><?php echo $this->user_details[0]['gender']; ?></span></p>
+                    </div>
+
+                </section>
+        </div>
+        <div id="model_reg" class="popupContainer" style="display:none;">
+            <header class="popupHeader6">
+                <span class="header_title">Register on portal</span>
+                <span class="modal_close"></span>
             </header>
-
             <section class="popupBody">
-
-                <div class="profile_img"><img height="900px" width="250px" src="/uploads/<?php echo $this->user_details[0]['emp_email']; ?>/profile.jpg"/></div>
-
-                <div class="profile"><h4><img height="60px" width="30px" src="/images/king.png"/>&nbsp;<?php echo $this->user_details[0]['emp_name']; ?></h4>
-                    <p>Email:<span style="padding-left: 50px"><?php echo $this->user_details[0]['emp_email']; ?></span></p>
-                    <p>EmployeeID:<span style="padding-left: 10px" ><?php echo $this->user_details[0]['emp_id']; ?></span></p>
-                    <p>Address:<span style="padding-left: 35px" ><?php echo $this->user_details[0]['address']; ?></span>sp</p>
-                    <p>Ph no:<span style="padding-left: 50px" ><?php echo $this->user_details[0]['phone_no']; ?></span></p>
-                    <p>Designation:<span style="padding-left: 10px" ><?php echo $this->user_details[0]['designation']; ?></span></p>
-                    <p>Age:<span style="padding-left: 60px" ><?php echo $this->user_details[0]['age']; ?></span></p>
-                    <p>Gender:<span style="padding-left: 39px"><?php echo $this->user_details[0]['gender']; ?></span></p>
-                </div>
-
+                <form name="regform" id="resetform">
+                    <p align="center" class="val_err"></p>
+                    <div class="intial-form">
+                        <div class="user_details">
+                            <label>Name</label>
+                            <input name="emp_name" id="emp_name_reg" type="text" style="height: 30px; width: 250px;" placeholder="Name"/>
+                            <br>
+                            <label>Emp_id</label>
+                            <input name="emp_id"id="emp_id_reg" type="text" style="height: 30px; width: 250px;" placeholder="Emp id"/>
+                            <br>
+                            <label>Email Address</label>
+                            <input name="emp_email" id="emp_email_reg" type="email" style="height: 30px; width: 250px;" placeholder="Email"/>
+                            <br>
+                            <label>Password</label>
+                            <input name="password" id="password_reg" type="password" style="height: 30px; width: 250px;" placeholder="password"/>
+                            <br>
+                            <label>Fathername</label>
+                            <input name="fathername" id="fathername_reg" type="text" style="height: 30px; width: 250px;" placeholder="fathername"/>
+                            <br>
+                            <label>Mothername</label>
+                            <input name="mothername" id="mothername_reg" type="text" style="height: 30px; width: 250px;" placeholder="mothername"/>
+                            <br>
+                            <label>Gender</label>
+                            Male: <input name="gender" id="gender_reg" type="radio" value="Male" style="height: 15px; width: 15px;"> &nbsp;&nbsp;&nbsp;Female: <input name="gender" value="Female" type="radio" style="height: 15px; width: 15px;">
+                            <br><br>
+                        </div>
+                        <div class="emr_details">
+                            <label>Phone no</label>
+                            <input name="emp_phno" id="emp_phno_reg" type="text" style="height: 30px; width: 250px;" placeholder="+9199948983078"/>
+                            <br>
+                            <label>DOB</label>
+                            <input name="dob" id="dob_reg" type="date" style="height: 30px; width: 250px;" placeholder="date of birth"/>
+                            <br>
+                            <label>Age</label>
+                            <input name="age" id="age_reg" type="text" style="height: 30px; width: 250px;" placeholder="Age"/>
+                            <br>
+                            <label>Bloodgroup</label>
+                            <input name="bloodgroup" id="bloodgroup_reg" type="text" style="height: 30px; width: 250px;" placeholder="Blood group"/>
+                            <br>
+                            <label>Address</label>
+                            <textarea  name="address" id="address_reg" cols="5" rows="3" style=" height: 90px; width: 250px;"></textarea>
+                            <br>
+                            <label>Spouse</label>
+                            <input name="spousename" id="spousename_reg" type="text" style="height: 30px; width: 250px;" placeholder="If not married type unmarried"/>
+                            <br>
+                        </div>
+                        <div class="action_btns">
+                            <div class="one_half last">
+                                <button class="btn btn-info" id="Next" value="Next" type="button" style="color: #FF7171;">Next<i class="icon-chevron-right"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="slide_left">
+                        <div class="user_details">
+                            <label>Designation</label>
+                            <input name="designation" id="designation_reg" type="text" style="height: 30px; width: 250px;" placeholder="Role"/>
+                            <br>
+                            <label>Department</label>
+                            <input name="department" id="department_reg" type="text" style="height: 30px; width: 250px;" placeholder="Department"/>
+                            <br>
+                            <h5>Emergency contact details</h5>
+                            <label>Name</label>
+                            <input name="emr_name" id="emr_name_reg" type="text" style="height: 30px; width: 250px;"/>
+                            <br>
+                            <label>Relation</label>
+                            <input name="emr_relation" id="emr_relation_reg" type="text" style="height: 30px; width: 250px;" placeholder="Relation with emp"/>
+                            <br>
+                            <label>Ph no</label>
+                            <input name="emr_phone" id="emr_phone_reg" type="text" style="height: 30px; width: 250px;" placeholder="Ph no"/>
+                            <br>
+                            <label>Email</label>
+                            <input name="emr_email" id="emr_email_reg" type="text" style="height: 30px; width: 250px;" placeholder="Email"/>
+                        </div>
+                        <div class="emr_details">
+                            <h5>Salaries details</h5>
+                            <label>Bank Acc no</label>
+                            <input name="bank_acc" id="bank_acc_reg" type="number" style="height: 30px; width: 250px;" placeholder="Bank Acc no"/>
+                            <br>
+                            <label>PF ACC no</label>
+                            <input name="pf_acc" id="pf_acc_reg" type="number" style="height: 30px; width: 250px;" placeholder="PF ACC no"/>
+                            <br>
+                            <label>PAN</label>
+                            <input name="pan" type="number" id="pan_reg" style="height: 30px; width: 250px;" placeholder="PAN"/>
+                            <br>
+                            <label>Bank IFSC code</label>
+                            <input name="ifsc" type="text" id="ifsc_reg" style="height: 30px; width: 250px;" placeholder="Bank IFSC code"/>
+                            <br>
+                            <label>Basic Salarie</label>
+                            <input name="basic_salrie" id="basic_salrie_reg" type="number" style="height: 30px; width: 250px;" placeholder="Basic Salari"/>
+                            <br>
+                            <label>Date of joining</label>
+                            <input name="doj"  id="doj_reg" type="date" style="height: 30px; width: 250px;" placeholder="Date of joining"/>
+                            <br>
+                            <!--                <label>Documents uploads</label>
+                                         <input name="doc" type="file" style="height: 30px; width: 250px;" placeholder="doc"/>
+                                         <br>-->
+                        </div>
+                        <div class="emr_details">
+                        </div>
+                        <div class="action_btns">
+                            <ul class="one_half_last">
+                                <li><button class="btn btn-info" id="Back" value="Back" type="button" style="color: #FF7171;"><i class="icon-chevron-left"></i> Back</button></li>
+                                <li class="reg-li"><input class="btn btn_red" id="register-btn" value="Register"></li>
+                            </ul>
+                        </div>   
+                    </div>
+                </form>
             </section>
         </div>
+        
         <script type="text/javascript">
+            $(".modal_trigger6").leanModal({top: 10, overlay: 0.2, closeButton: ".modal_close"});
             $("#modal_trigger1").leanModal({top: 120, overlay: 0.2, closeButton: ".modal_close"});
-
         </script>
         <div id="content">
