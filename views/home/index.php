@@ -1,27 +1,42 @@
-<div class="container">
-    <div id="main">
-        <?php
+<?php
         require 'views/header.php';
-// var_dump($this->getLeavesDeatilsByHr);
-// var_dump($this->getLeavesDeatils);
-        ?>
+       // var_dump($this->getLeavesDeatilsByHr);
+        // var_dump($this->getLeavesDeatils);?>
+        <div id="main">
+        <div class="container all-content">
+        
         <div class="main-content">
-            <div id="myCarousel" class="carousel slide">
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-                Carousel items 
-                <div class="carousel-inner">
-                    <div class="active item"><img src="/images/404.jpg"></div>
-                    <div class="item"><img src="/images/404.jpg"></div>
-                    <div class="item"><img src="/images/404.jpg"></div>
-                </div>
-                Carousel nav 
-                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" 
+                        aria-hidden="true">
+                    &times;
+                </button>
+                <?php $row = $this->getLeavesDeatilsByHr;?>
+                <?php echo $row[0]['emp_name']; ?> Applied a leave. On <span><?php echo $row[0]['apply_date']; ?></span>
+                <span class="alert-desc" style="display: block"><?php echo $row[0]['description']; ?></span>
             </div>
+            <div class="span8 left-cntnt">
+                <div id="myCarousel" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="active item">
+                            <img src="/images/item1.jpg" alt="Slide1" />
+                        </div>
+                        <div class="item">
+                            <img src="/images/item2.jpg" alt="Slide2" />
+                        </div>
+                        <div class="item">
+                            <img src="/images/item3.jpg" alt="Slide3" />
+                        </div>
+                    </div>
+                    <a class="carousel-control left " href="#myCarousel" data-slide="prev">
+                        <i class="icon-chevron-left-sign"></i></a>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                        <i class="icon-chevron-right-sign"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="span5">
             <div id="all_leaves_hr" data-complete = <?php echo "'" . json_encode($this->getLeavesDeatilsByHr) . "'"; ?> >
                 <div id="all_leaves" data-complete = <?php echo "'" . json_encode($this->getLeavesDeatils) . "'"; ?> >
                     <?php if ($this->user_details[0]['designation'] == 'hr_manager') { ?>
@@ -30,13 +45,12 @@
                     <?php } ?>
                 </div>  
             </div>
-        </div>
-
+        
         <?php if ($this->user_details[0]['designation'] == 'hr_manager') { ?>
             <div class="dash_table">
-                <h3>Recent Leave Applications</h3>
                 <div class="overflow">
-                    <table border="2px">
+                    <div class="tbl-hdr"><h2>Leave Applications</h2></div>
+                    <table class="table table-hover table-condensed table-bordered">
                         <tr >
                             <th>Name</th>
                             <th>Date</th>
@@ -48,10 +62,10 @@
                         for ($i = 0; $i < sizeof($row); $i++) {
                             ?>
                             <tr>
-                                <td width="100px" align="center"><a id="<?php echo $i; ?>" href="#payslip-popup" class="modal_trigger6 hr-lev"><?php echo $row[$i]['emp_name']; ?></a></td>
-                                <td width="100px" align="center"><?php echo $row[$i]['apply_date']; ?></td>
-                                <td width="100px" align="center"><?php echo $row[$i]['manager_status']; ?></td>
-                                <td width="100px" align="center"><?php echo $row[$i]['status']; ?></td>
+                                <td align="center"><a id="<?php echo $i; ?>" href="#payslip-popup" class="modal_trigger6 hr-lev"><?php echo $row[$i]['emp_name']; ?></a></td>
+                                <td align="center"><?php echo $row[$i]['apply_date']; ?></td>
+                                <td align="center"><?php echo $row[$i]['manager_status']; ?></td>
+                                <td align="center"><?php echo $row[$i]['status']; ?></td>
                             </tr>
 
 
@@ -59,15 +73,18 @@
                     </table>
                 </div>
             </div>
+            
 <?php } ?>
 
 
 <?php if ($this->user_details[0]['designation'] == 'Project_manager') { ?>
             <div class="dash_table">
-                <h3>Recent Leave Applications</h3>
                 <div class="overflow">
-                    <table border="1px">
-                        <tr bgcolor="#FF4D4D" hbgeight="30px">
+                    <div class="tbl-hdr"><h2>Leave Applications</h2></div>
+                    <table class="table table-hover table-condensed table-bordered">
+                        
+                        <tr>
+                            
                             <th>Name</th>
                             <th>Date</th>
                             <th>manager status</th>
@@ -77,9 +94,9 @@
                         for ($i = 0; $i < sizeof($row); $i++) {
                             ?>
                             <tr>
-                                <td width="200px" align="center"><a id="<?php echo $i; ?>" href="#leave_manager" class="modal_trigger6 maneger-lev"><?php echo $row[$i]['emp_name']; ?></a></td>
-                                <td width="150px" align="center"><?php echo $row[$i]['apply_date']; ?></td>
-                                <td width="100px" align="center"><?php echo $row[$i]['manager_status']; ?></td>
+                                <td  align="center"><a id="<?php echo $i; ?>" href="#leave_manager" class="modal_trigger6 maneger-lev"><?php echo $row[$i]['emp_name']; ?></a></td>
+                                <td  align="center"><?php echo $row[$i]['apply_date']; ?></td>
+                                <td  align="center"><?php echo $row[$i]['manager_status']; ?></td>
 
                             </tr>
     <?php } ?>
@@ -87,7 +104,9 @@
                 </div>
             </div>
 <?php } ?>
-
+        </div>
+        </div>
+    </div>
         <!--success pop up's area-->
 
         <a id= "btn-trgr" href="#resp-popup" class="modal_trigger_status" hidden></a>
@@ -171,6 +190,7 @@
         var data = $("#all_leaves_hr").data('complete');
         data = data[i];
         $("#payslip-popup").data("lid", data['id']);
+        
         // $("#payslip-popup").find("#hrlev-emp-addr").text(data['address']);
         // $("#payslip-popup").find("#hrlev-emp-code").text(data['emp-code']);
         $("#payslip-popup").find("#hrlev-date").text(data['apply_date']);
@@ -187,6 +207,7 @@
         var data = $("#all_leaves").data('complete');
         data = data[i];
         $("#leave_manager").data("lid", data['id']);
+        
         $("#leave_manager").find("#mngrlev-date").text(data['apply_date']);
         $("#leave_manager").find("#mngrlev-sub").text(data['subject'].split("\\sq").join("'"));
         $("#leave_manager").find("#mngrlev-desc").text(data['description'].split("\\sq").join("'"));

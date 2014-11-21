@@ -1,4 +1,15 @@
 <?php require 'views/header.php'; ?>
+<div id="main">
+    <div class="container all-content">
+        <div class="main-content">
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" 
+                        aria-hidden="true">
+                    &times;
+                </button>
+                <span><b>Notice:</b> Thank you everyone for making #Changemakers such a wonderful event.</span>
+                <span class="alert-desc" style="display: block"></span>
+            </div>
 <!--<script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -140,6 +151,9 @@ document.getElementById('login-btn').onclick = function() {
                 <span class="modal_close"></span>
             </header>
     <section class="popupBody"></section>
+</div>
+        </div>
+    </div>
 </div>
 <script>
 $(".modal_trigger_status").leanModal({top: 150, overlay: 0.2, closeButton: ".modal_close"});

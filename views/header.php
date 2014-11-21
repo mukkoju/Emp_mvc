@@ -1,6 +1,7 @@
 <html>
     <head>
-        <title>loading....</title>
+        <title>Saddahaq Employes</title>
+        <link rel="icon" type="image/png" href="https://saddahaq.blob.core.windows.net/multimedia/favicon.ico">
         <link rel="stylesheet" href="<?php echo URL; ?>public/css/view_helper.css" />
         <link rel="stylesheet" href="<?php echo URL; ?>public/global/saddahaq/css/saddahaq-ie7.css" />
         <link rel="stylesheet" href="<?php echo URL; ?>public/global/saddahaq/css/saddahaq.css" />
@@ -8,6 +9,7 @@
         <link rel="stylesheet" href="<?php echo URL; ?>public/global/bootstrap/css/bootstrap.min.css" />
         <link rel="stylesheet" href="<?php echo URL; ?>public/global/bootstrap/css/bootstrap-responsive.css" />
         <link rel="stylesheet" href="<?php echo URL; ?>public/global/bootstrap/css/bootstrap-responsive.min.css" />
+        <link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
         <script src="<?php echo URL; ?>public/js/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="<?php echo URL; ?>public/js/jquery.leanModal.min.js"></script>
 <!--        <script type="text/javascript" src="<?php echo URL; ?>public/js/popup.js"></script>-->
@@ -81,41 +83,6 @@
             </nav>
         </header>
 
-
-
-
-        <!--        <div id="header">
-                    <nav class="navbar navbar-default navbar- nav" role="navigation">
-                        <div class="container">
-                            <ul class="nav navbar-nav mainmenu">
-                                <li style="padding-top: 10px; padding-right: 10px" ><span><a href="/home/index"><img src="/images/logo.png" style="max-width: 130px;"></a></span></li>
-                                <li class=""><a href="../home"><font color="white">Home</font></a></li>
-                                <li class=""><a href="" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow"><font color="white">HR</font><i class="icon-chevron-down"></i></a>
-                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
-                                    <li class="dropdown"><a href="/salaries">Salaries</a></li>
-                                    <li class="dropdown"><a href="#model_reg" class="modal_trigger6">New Emp</a></li>
-                                    <li class="dropdown"><a href="#model_reg" class="modal_trigger6">Employe Docs</a></li>
-                                    <li class="dropdown"><a href="/home/logout">Exit Settlement</a></li>
-                                    <li class="dropdown"><a href="/emp_data">All Emp</a></li>
-                                    </ul>
-                                </li>
-                                <li class="" ><a href="../leaves"><font color="white">Leaves</font></a></li>
-                                <li class="" ><a href="../download"><font color="white">Downloads</font></a></li>
-                                
-                                <li class="navbar-right"><a href="#model" id="modal_trigger1">
-        <?php $email = $this->user_details[0]['emp_email']; ?>
-        <?php $profile = "/uploads/$email/profile.jpg"; ?>
-        <?php if (!file_exists("$profile")) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/uploads/<?php echo $this->user_details[0]['emp_email']; ?>/profile.jpg' class="profile-avtr"><?php } ?> <font color="white"><?php echo $this->user_details[0]['emp_name']; ?></font></a></li>
-                                <li><a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow">
-                                        <span class="caret"></span></a>
-                                    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
-                                        <li class="dropdown"><a href="/home/logout">Logout</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>-->
         <div id="model" class="popupContainer1 pop_cont" style="display:none;">
             <header class="popupHeader6">
                 <span class="header_title">Look at your Profile</span>
@@ -261,4 +228,4 @@
             $(".modal_trigger6").leanModal({top: 10, overlay: 0.2, closeButton: ".modal_close"});
             $("#modal_trigger1").leanModal({top: 120, overlay: 0.2, closeButton: ".modal_close"});
         </script>
-        <div id="content">
+        

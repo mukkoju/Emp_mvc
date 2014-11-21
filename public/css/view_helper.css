@@ -12,8 +12,8 @@ body
 }
    
 .dash_table{
-    float: left;
-    padding-left: 500px; 
+    // float: left;
+    // padding-left: 500px; 
      
 }
    
@@ -111,25 +111,27 @@ textarea{
 }
 
 .apply{
-    
-    font-weight: none; 
-    font-family: Georgia;
+line-height: 1.2em !important;
+font-family: 'Open Sans Condensed',sans-serif !important;
+font-size: 2em;
+font-weight: 600;
+letter-spacing: -1px;
+;
      
 }
 .apply_form{
-    float: left;
+    // float: left;
 }
 .apply_left{
-    
-    float: right;
-    padding-top: 30px;
+    //float: right;
+    padding-top: 20px;
     padding-right: 0px; 
         
 }
 
 .overflow{
-    overflow: scroll;
-    height: 500px;
+    overflow-y: scroll;
+    height: 460px;
 }
 
 .user_details{
@@ -241,6 +243,16 @@ header {
 
 }
 
+.popupHeader6{
+    height: 38px !important;
+}
+.popupHeader7{
+    height: 30px !important;
+}
+.popupHeader{
+    height: 38px !important;
+}
+
 #logo{
 	margin: 18px;
 	float: left;
@@ -320,9 +332,104 @@ margin-left: 5px;
 
 #main {
 position: relative;
-width: 100%;
+// width: 100%;
 margin-top: 70px;
 }
 .container{
+  width: 100% !important;
     box-shadow: none !important;
+}
+.left-cntnt{
+    // padding-left: 4% !important;
+}
+.right-cntnt{
+    width: 30% !important;
+    position: relative;
+}
+.main-content{
+    margin-left: 3% !important;
+    // position: relative;
+}
+.all-content{
+    
+    position: relative;
+}
+
+.carousel .item {
+    width: 100%; /*slider width*/
+    /*min-width: 500px;*/
+    max-height: 500px; slider height
+/*height: 600px;*/
+background-size: cover;
+}
+.carousel .item img {
+    width: 100%; /*img width*/
+}
+/*add some makeup*/
+.carousel .carousel-control {
+    background: none;
+    border: none;
+    
+}
+.carousel-control{
+    width: 15% !important;
+}
+.carousel-control.left{
+    background-image: none !important;
+    padding-left: 0px!important;
+    margin-left: 0px!important;
+}
+.carousel-control.right{
+    background-image: none !important;
+    right: 35px !important;
+}
+/*full width container*/
+@media (max-width: 767px) {
+    .block {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+}
+
+.carousel-control i{
+    font-size: 2.3em;
+    margin-top: 240%;
+}
+.tbl-hdr{
+    background-color: #2e3641;
+    color: white;
+}
+.tbl-hdr h2{
+     margin-top: 0px !important;
+    font-family: 'Roboto',sans-serif !important;
+    font-size: 1.232em;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 0px !important;
+}
+
+.alert-success{
+ width: 92% !important;
+ margin-left: 20px;
+}
+.alert-desc{
+    width: 50%; 
+    overflow: hidden; 
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#leave_apply_btn{
+    color: #FF7171;
+    background-color: white;
+    border: 2px solid #FF7171;
+    margin-left: 77%;
+}
+#leave_apply_btn:hover{
+    opacity: 0.7;
+}
+.salaries select{
+    line-height: 40;
+    margin-right: 50px !important;
+    margin-bottom:6px !important;
 }
