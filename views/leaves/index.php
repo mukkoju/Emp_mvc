@@ -1,17 +1,4 @@
 <?php require 'views/header.php'; ?>
-<div id="main">
-    <div class="container all-content">
-
-        <div class="main-content">
-            <div class="alert alert-success alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" 
-                        aria-hidden="true">
-                    &times;
-                </button>
-                <span><b>Notice:</b> Thank you everyone for making #Changemakers such a wonderful event.</span>
-                <span class="alert-desc" style="display: block"></span>
-            </div>
-
             <div class="span8 left-cntnt">
             <div class="apply_form" id="aply">
                 <h2 class="apply">Apply leave Here</h2><br>
@@ -52,7 +39,6 @@
                                     <span class="header_title">Leave Application</span>
                                     <span class="modal_close"></span>
                                 </header>
-
                                 <section class="popupBody6"><p><i><b><?php echo $row[$i]['emp_name']; ?></b><br/>Address:<br/>Employee code:</i></p>
                                     <p><i>Date: <?php echo $row[$i]['apply_date']; ?></i></p>
                                     <p><i>To:<br/>HR Department<br/>SADDAHAQ</i></p><br/>
@@ -61,21 +47,15 @@
                                     <p><i><?php echo $row[$i]['description']; ?>......</i></p><br/>
                                     <p><i>Sincerely,<br/><?php echo $row[$i]['emp_name']; ?>.</i></p>
                                     <div>
-
                                     </div>
                                 </section>
                             </div>
-
-
                             </tr>
-
 <?php } ?>
                     </table>
                 </div>
             </div>
             </div>
-                
-
             <!--success pop up's area-->
             <a id= "btn-trgr" href="#resp-popup" class="modal_trigger_status" hidden></a>
             <div id="resp-popup" class="popupContainer_status" style="display:none;">
@@ -90,10 +70,8 @@
     <script type="text/javascript">
         $(".modal_trigger5").leanModal({top: 50, overlay: 0.2, closeButton: ".modal_close"});
         $(".modal_trigger_status").leanModal({top: 150, overlay: 0.2, closeButton: ".modal_close"});
-
         $("#leave_apply_btn").click(function (e) {
             e.preventDefault();
-
             var regform = document.forms['leave_apply_form'];
             if (regform.elements['sub'].value == "") {
                 $("#aply").find(".val_err").text("Subject must be requried");
@@ -107,7 +85,6 @@
                 $("#aply").find(".val_err").text("Reson requred for the leave that you are appyling");
                 return false;
             }
-
             $.ajax({
                 url: "/leaves/apply",
                 method: 'post',
@@ -120,13 +97,11 @@
                     "emp_id": regform.elements['emp_id'].value,
                 },
                 success: function (res) {
-
                     $("#resp-popup").find(".popupBody").html(res);
                     $("#btn-trgr").trigger('click');
                     //             location.reload();
                 }
             });
         });
-
-    </script>
+</script>
 <?php require 'views/footer.php'; ?>

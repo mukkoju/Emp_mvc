@@ -23,9 +23,18 @@
     
     public function down_slips($file_name){
         $folder_name =  Session::get('loggedIn');
-        $file_path="/var/www/emp_mvc/uploads/$folder_name/" .$file_name;
+        $file_path="/var/www/Emp_mvc/uploads/$folder_name/" .$file_name;
         echo "$file_path";
         $this->model->down_slips($file_path, $file_name, "image/png");
         $this->view->render('download/index');
     }
+    
+    public function down_staments($file_name){
+        $folder_name =  Session::get('loggedIn');
+        $file_path="/var/www/Emp_mvc/uploads/$folder_name/Bank_statments/" .$file_name;
+        echo "$file_path";
+        $this->model->down_slips($file_path, $file_name, "image/png");
+        $this->view->render('download/index');
+    }
+    
 }

@@ -15,8 +15,9 @@ class Download_model extends Model {
     }
     
     
-    public function down_slips($file, $name, $mime_type=''){
-        if(!is_readable($file)) die('File not found or inaccessible!');
+ public function down_slips($file, $name, $mime_type=''){
+     echo $file;
+ if(!is_readable($file)) die('File not found or inaccessible!');
  $size = filesize($file);
  $name = rawurldecode($name);
  $known_mime_types=array(

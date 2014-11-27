@@ -28,7 +28,7 @@ class Home extends Controller {
 public function logout(){
     Session::destroy();
     header('location: ../index');
-            exit();
+    exit();
 }
 public function register(){
     
@@ -45,4 +45,21 @@ public function due_deatils(){
     echo json_encode($this->model->paid_deatils($_SESSION['loggedIn']));
 }
 
+public function postupdate(){
+    echo $this->model->updates();
+    
+}
+public function getupdates(){
+         echo json_encode($this->model->get_new_update());
+     }  
+ 
+public function empdocs(){
+         echo $this->model->empdocs();
+     }
+public function bank_statement(){
+    echo json_encode($this->model->bank_statement());
+}
+public function get_statements(){
+    echo json_encode($this->model->get_statements());
+}     
 }

@@ -21,12 +21,11 @@
         <script type="text/javascript" src="<?php echo URL; ?>public/global/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo URL; ?>public/global/bootstrap/js/jquery-ui.js"></script>
         <script type="text/javascript" src="<?php echo URL; ?>public/global/bootstrap/js/jquery-ui.min.js"></script>
-
     </head>
     <body>
         <header>
 
-            <a href="/home/index" id="logo"></a>
+            <a href="/home" id="logo"></a>
 
             <nav>
                 <a href="#" id="menu-icon"></a>
@@ -34,20 +33,20 @@
                 <ul class="hidden-desktop" style="float: right;">
                     <li class="dropdown hidn-dsktp-mnu pull-right"><a href="" id="dLabel" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" rel="nofollow"><i class="icon-navicon"></i></a>
                         <ul class="dropdown-menu hr-dropdwn" role="menu" aria-labelledby="dLabel">
-                            <li class="dropdown"><a href="/home" class="current">Home</a></li>
-                            <li class="dropdown"><a href="/leaves">Leaves</a></li>
-                            <li class="dropdown"><a href="/download">Downloads</a></li>
+                            <li class="dropdown"><a href="/home" class="current">HOME</a></li>
+                            <li class="dropdown"><a href="/leaves">LEAVES</a></li>
+                            <li class="dropdown"><a href="/download">DOWNLOADS</a></li>
                             <li class="dropdown-submenu"><a href="" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" rel="nofollow">HR</a>
                                 <ul class="dropdown-menu hr-dropdwn pull-right" role="menu" aria-labelledby="dLabel">
-                                    <li class="dropdown"><a href="/salaries">Salaries</a></li>
-                                    <li class="dropdown"><a href="#model_reg" class="modal_trigger6">New Emp</a></li>
-                                    <li class="dropdown"><a href="#model_reg" class="modal_trigger6">Employe Docs</a></li>
-                                    <li class="dropdown"><a href="/home/logout">Exit Settlement</a></li>
-                                    <li class="dropdown"><a href="/emp_data">All Emp</a></li>
+                                    <li class="dropdown"><a href="/salaries">SALARIES</a></li>
+                                    <li class="dropdown"><a href="#model_reg" class="modal_trigger6">NEW EMP</a></li>
+                                    <li class="dropdown"><a href="#model_doc" class="modal_trigger6">EMP DOCS</a></li>
+                                    <li class="dropdown"><a href="/home/logout">EXIT SETTILEMENT</a></li>
+                                    <li class="dropdown"><a href="/emp_data">ALL EMP</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="/home/logout">Logout</a></li>
-                            <li class="usr-pic-name-hdr dropdown"><a href="#model" id="modal_trigger1">
+                            <li class="dropdown"><a href="/home/logout">LOGOUT</a></li>
+                            <li class="usr-pic-name-hdr"><a href="#model" id="modal_trigger12">
                                     <?php $email = $this->user_details[0]['emp_email']; ?>
                                     <?php $profile = "/uploads/$email/profile.jpg"; ?>
                                     <?php if (!file_exists("$profile")) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/uploads/<?php echo $this->user_details[0]['emp_email']; ?>/profile.jpg' class="profile-avtr"><?php } ?> <?php echo $this->user_details[0]['emp_name']; ?></a>
@@ -58,25 +57,25 @@
                 </ul>
                 <!--          Hidden phone menu-->
                 <ul class="hidden-phone">
-                    <li><a href="/home" class="current">Home</a></li>
-                    <li><a href="/leaves">Leaves</a></li>
-                    <li><a href="/download">Downloads</a></li>
+                    <li><a href="/home" class="current">HOME</a></li>
+                    <li><a href="/leaves">LEAVES</a></li>
+                    <li><a href="/download">DOWNLOADS</a></li>
                     <li class="dropdown"><a href="" id="dLabel" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" rel="nofollow">HR<span class="caret"></span></a>
                         <ul class="dropdown-menu hr-dropdwn" role="menu" aria-labelledby="dLabel">
-                            <li class="dropdown"><a href="/salaries">Salaries</a></li>
-                            <li class="dropdown"><a href="#model_reg" class="modal_trigger6">New Emp</a></li>
-                            <li class="dropdown"><a href="#model_reg" class="modal_trigger6">Employe Docs</a></li>
-                            <li class="dropdown"><a href="/home/logout">Exit Settlement</a></li>
-                            <li class="dropdown"><a href="/emp_data">All Emp</a></li>
+                            <li class="dropdown"><a href="/salaries">SALARIES</a></li>
+                            <li class="dropdown"><a href="#model_reg" class="modal_trigger6">NEW EMP</a></li>
+                            <li class="dropdown"><a href="#model_doc" class="modal_trigger6">EMP DOCS</a></li>
+                            <li class="dropdown"><a href="/home/logout">EXIT SETTILEMENT</a></li>
+                            <li class="dropdown"><a href="/emp_data">ALL EMP</a></li>
                         </ul>
                     </li>
-                    <li class="usr-pic-name-hdr hidden-phone dropdown"><a href="#model" id="modal_trigger1">
+                    <li class="usr-pic-name-hdr hidden-phone"><a href="#model" id="modal_trigger1">
                             <?php $email = $this->user_details[0]['emp_email']; ?>
-                            <?php $profile = "/uploads/$email/profile.jpg"; ?>
-                            <?php if (!file_exists("$profile")) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/uploads/<?php echo $this->user_details[0]['emp_email']; ?>/profile.jpg' class="profile-avtr"><?php } ?> <?php echo $this->user_details[0]['emp_name']; ?></a>
+                            <?php $profile = "/uploads/profile.jpg"; ?>
+                            <?php if (!file_exists($profile)) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/images/<?php $email?>/profile.jpg' class="profile-avtr"><?php } ?> <?php echo $this->user_details[0]['emp_name']; ?></a>
                         <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow"><span class="caret"></span></a>
                         <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
-                            <li class="dropdown"><a href="/home/logout">Logout</a></li>
+                            <li class="dropdown"><a href="/home/logout">LOGOUT</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -223,7 +222,28 @@
                 </form>
             </section>
         </div>
+        <div id="model_doc" class="popupContainer" style="display:none;">
+            <header class="popupHeader6">
+                <span class="header_title">Employee docs uploading</span>
+                <span class="modal_close"></span>
+            </header>
+            <section class="popupBody">
+                <div><form id="docs-form" enctype="multipart/form-data">
+                                <label>Employee Email:<br><input type="email" placeholder="Mail id of employe" style="height: 30px; width: 250px;"></label>
+                                <label>Select Document:<input type="file" name = "empdoc" id="docs-file"></label>
+                                <button class="btn btn-info" value="POST" id="upload-docs-butn" type="button" style="color: #FF7171;">Upload</button>
+                       </form>
+                       <progress></progress>
+                </div>
+            </section>
+        </div>
         
+        <!--body starting here-->
+        <div id="main">
+        <div class="container all-content">
+        <div class="main-content">
+            <div id="notifc">
+            </div>
         <script type="text/javascript">
             $(".modal_trigger6").leanModal({top: 10, overlay: 0.2, closeButton: ".modal_close"});
             $("#modal_trigger1").leanModal({top: 120, overlay: 0.2, closeButton: ".modal_close"});

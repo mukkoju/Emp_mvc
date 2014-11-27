@@ -191,6 +191,18 @@ letter-spacing: -1px;
     background-position: 30px !important;
 }
 
+#post-butn{
+    color: #FF7171;
+    background-color: white;
+    border: 1px solid #FF7171;
+    
+}
+
+#upload-docs-butn{
+    color: #FF7171;
+    background-color: white;
+    border: 1px solid #FF7171;
+}
 #Back{
     color: #FF7171;
     margin-right: 10%;
@@ -311,7 +323,7 @@ nav li a{
     // padding: 0;
     line-height: 20px;
     font-size: .857em;
-    text-transform: uppercase;
+/*    text-transform: uppercase;*/
     color: #f0f1f2;
 }
 
@@ -412,6 +424,11 @@ background-size: cover;
  width: 92% !important;
  margin-left: 20px;
 }
+
+.alert-info{
+ width: 92% !important;
+ margin-left: 20px;
+}
 .alert-desc{
     width: 50%; 
     overflow: hidden; 
@@ -432,4 +449,67 @@ background-size: cover;
     line-height: 40;
     margin-right: 50px !important;
     margin-bottom:6px !important;
+}
+
+
+td{
+    font-size: 0.91em !important;
+    font-family: 'Roboto',sans-serif !important;
+    text-align: center !important;
+}
+
+footer {
+    margin-top: 50px;
+ position: relative;
+ font-size: .9285em;
+ clear : both;
+}
+footer ul, footer .pull-right {
+ display: table !important;
+ margin : 8px auto 0 !important;
+}
+
+footer .footer_social a{
+    padding-top: 20px;
+    vertical-align: middle;
+}
+footer .scl-btns {
+ margin: 16px auto 4px;
+ font-size: 1.4285em;
+}
+footer ul li {
+
+ list-style-type: none;
+ float: left;
+ text-align: center !important;
+}
+footer ul li i.icon-twitter {padding-bottom: 15px; color: #00ACEE;}
+footer ul li i.icon-facebook {padding-bottom: 15px; color: #3b5998;}
+footer ul li i { font-size: 2.2857em; vertical-align: middle !important; color: black;}
+footer ul li a {padding : 8px 8px;}
+footer ul li:not(:first-of-type):before {
+ content: ' | '
+}
+
+footer > span {padding : 8px; position: absolute; bottom : 0; right : 0;}
+footer > span > a {color : #E31E24; font-size: 0.857em;}
+
+.dwnld{
+   text-align: center !important;
+}
+.dwnld i{
+    color: #FF4141;
+    font-size: 1.5em;
+    background-position: 20px;
+}
+.dwnld i:hover{
+    color: black;
+}
+
+table th{
+    text-align: center !important;
+}
+.new_statement::before{
+    content: "New ";
+    color: #FF4141;
 }

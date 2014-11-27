@@ -103,6 +103,19 @@ $(function () {
 //                }, 2000);
             }
         });
+        
+        $.ajax({
+            url: "/home/bank_statement",
+            method: 'post',
+            data: {"slctd_emp": slctd_emp},
+            success: function (res) {
+                var stmnt = JSON.parse(res);
+                $(".td-apndg-bnk-stmnt").html("<td align='center'>"+stmnt.filename+"</td><td align='center' class='dwnld'><a href='/download/down_staments/"+stmnt.filename+"'><i class='icon-download'></i></a></td>");
+                setTimeout(function () {
+                    window.location.reload();
+               }, 1000);
+            }
+        });
     });
 
 
@@ -131,6 +144,7 @@ $(function () {
             },
             success: function (d) {
                 d = JSON.parse(d);
+                
                 if (d.length == 0) {
                     $('#table1').hide();
                     $('#process').hide();
@@ -160,6 +174,7 @@ $(function () {
                 }
             }
         });
+        
 
     });
     if (location.href == 'https://localhost:8811/salaries') {
@@ -199,6 +214,18 @@ $(function () {
                     }
                 }
             }
+        });
+        $.ajax({
+           url: "/home/get_statements",
+           method: 'post',
+           success:function(d){
+               d = JSON.parse(d);
+               var arry_length = d.length;
+               for(i=0; i<arry_length; i++){
+               $("#bank_stmnt-table").append("<tr><td align='center'>"+d[i]['statement_name']+"</td><td align='center' class='dwnld'><a href='/download/down_staments/"+d[i]['statement_name']+"'><i class='icon-download'></i></a></td></tr>");
+               }
+               $('#bank_stmnt-table tr:nth-child(3) td:nth-child(1)').addClass("new_statement");
+       }
         });
     }
     $('.popupContainer').on('click', '#Next', function () {
@@ -535,6 +562,97 @@ $(function () {
             });
         }
     });
-
+    $('#post-butn').click(function(){
+      $.ajax({
+         url: "home/postupdate",
+         method: "post",
+         data: {
+             post: $('#post-txt').val()
+             
+         },
+         success: function(res){
+             $("#resp-popup").find(".popupBody").html(res);
+             $("#btn-trgr").trigger('click');
+             setTimeout(function () {
+                    window.location.reload();
+                }, 2000);
+         }
+      });
+    });
+    
+     $.ajax({
+         url: "/home/getupdates",
+         method: "post",
+         contentType: "application/json",
+         data:{
+             tp: "updt" 
+         },
+         success: function(d){
+            var d = JSON.parse(d);
+            var time = new Date(d[0].time*1000);
+            $('#notifc').html("<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times; </button>"+time+"<br/><b>Notice: </b>"+d[0].new_update+"<span></span><span class='alert-desc' style='display: block'></span></div>");
+         }
+     })
+     
+    $('#docs-file').change(function(){
+    var file = this.files[0];
+    var name = file.name;
+    var size = file.size;
+    var type = file.type;
+    //Your valid0ation
+});
+     
+//     $('#upload-docs-butn').click(function(){
+//      // var formData = new FormData($('#docs-form')[0]);
+//        $.ajax({
+//        url: 'home/empdocs',  //Server script to process data
+//        type: 'POST',
+//        xhr: function() { 
+//            // Custom XMLHttpRequest
+//            var myXhr = $.ajaxSettings.xhr();
+//            if(myXhr.upload){
+//                // Check if upload property exists
+//                myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // For handling the progress of the upload
+//            }
+//            
+//            return myXhr;
+//        },
+//        //Ajax events
+////        beforeSend: beforeSendHandler,
+////        success: completeHandler,
+////        error: errorHandler,
+//        // Form data
+//         // data: formData,
+//        //Options to tell jQuery not to process data or worry about content-type.
+////        cache: false,
+////        contentType: false,
+////        processData: false
+//    });
+//});
+     
+     $('#upload-docs-butn').click(function(e){
+         e.preventDefault();
+        var formData = new FormData();
+        var files = document.getElementById('docs-file');
+        files = files.files;
+        alert(files);
+        formData.append("empdoc",files[0],files[0].name);
+        console.log(formData.append("empdoc",files[0],files[0].name));
+        $.ajax({
+            url: '/home/empdocs',
+            method: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                alert("Data uploaded");
+            }
+        });
+        return false; 
+     });
+     
+     
+     
 });
 

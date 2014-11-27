@@ -123,70 +123,68 @@ class Home_model extends Model {
             // $file = "/var/www/emp_mvc/uploads/$file_name";
 
             $html = '<html><div style="background-image: url(https://localhost:8811/images/letter_head.png); background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;">
-        <div style="padding-top: 25%;
-    padding-bottom: 25%;"><h5 align="center">"Payslip for the month of ' . $month . ' ' . $year . '</h5><h5 align="center">Financial Period 2013-' . $date = date("Y") . '</h5>
-    <table align="center" border="1">
-        <tr><th colspan="4">Associate Information</th></tr>
-        <tr><td>Name</td>
-            <td>' . ($post[$i]['emp_name']) . '</td>
-            <td>PAN</td>
-            <td>' . ($post[$i]['pan']) . '</td></tr>
-        <tr><td>Designation</td>
-            <td>' . ($post[$i]['designation']) . '</td>
-            <td>Bank A/C</td>
-            <td>' . ($post[$i]['bank_a/c']) . '</td></tr>
-        <tr><td>Gender</td>
-            <td>' . ($post[$i]['gender']) . '</td>
-            <td>IFSC Code</td>
-            <td>' . ($post[$i]['ifsc']) . '</td></tr>
-        <tr><td>Date Of Joining</td>
-            <td>' . ($post[$i]['doj']) . '</td>
-            <td>Available Calender Days</td>
-            <td>' . ($post[$i]['available_days']) . '</td></tr>
-        <tr><td>Date Of Birth</td>
-            <td>' . ($post[$i]['dob']) . '</td>
-            <td>Paid Days</td>
-            <td>' . ($post[$i]['paid_days']) . '</td></tr>
-        <tr><td>PF A/C</td>
-            <td>' . ($post[$i]['pf_a/c']) . '</td>
-            <td>Loss Of Days</td>
-            <td>' . ($post[$i]['loss_of_days']) . '</td></tr>
-    </table><br/>
+                     background-repeat: no-repeat;
+                    background-size: 100% 100%;">
+                     <div style="padding-top: 25%;
+                    padding-bottom: 25%;"><h5 align="center">Payslip for the month of ' . $month . ' ' . $year . '</h5><h5 align="center">Financial Period 2013-' . $date = date("Y") . '</h5>
+            <table align="center" border="1">
+                    <tr><th colspan="4">Associate Information</th></tr>
+                    <tr><td>Name</td>
+                    <td>' . ($post[$i]['emp_name']) . '</td>
+                    <td>PAN</td>
+                    <td>' . ($post[$i]['pan']) . '</td></tr>
+                    <tr><td>Designation</td>
+                    <td>' . ($post[$i]['designation']) . '</td>
+                    <td>Bank A/C</td>
+                    <td>' . ($post[$i]['bank_a/c']) . '</td></tr>
+                <tr><td>Gender</td>
+                    <td>' . ($post[$i]['gender']) . '</td>
+                    <td>IFSC Code</td>
+                    <td>' . ($post[$i]['ifsc']) . '</td></tr>
+                <tr><td>Date Of Joining</td>
+                    <td>' . ($post[$i]['doj']) . '</td>
+                    <td>Available Calender Days</td>
+                    <td>' . ($post[$i]['available_days']) . '</td></tr>
+                <tr><td>Date Of Birth</td>
+                    <td>' . ($post[$i]['dob']) . '</td>
+                    <td>Paid Days</td>
+                    <td>' . ($post[$i]['paid_days']) . '</td></tr>
+                <tr><td>PF A/C</td>
+                    <td>' . ($post[$i]['pf_a/c']) . '</td>
+                    <td>Loss Of Days</td>
+                    <td>' . ($post[$i]['loss_of_days']) . '</td></tr>
+            </table><br/>
 
-    <table align="center" border="1" >
-        <tr><th>Earnings</th>
-            <th>Amount</th>
-            <th>Deductions</th>
-            <th>Amount</th></tr>
-        <tr><td>Basic</td>
-            <td>basic</td>
-            <td>TDS</td>
-            <td>' . ($post[$i]['tds']) . '</td></tr>
-        <tr><td>HRA</td>
-            <td>' . ($post[$i]['hra']) . '</td>
-            <td>PF</td>
-            <td>' . ($post[$i]['pf']) . '</td></tr>
-        <tr><td>Conveyance Allowance</td>
-            <td>' . ($post[$i]['conveyance_allowance']) . '</td>
-            <td>PT</td>
-            <td>' . ($post[$i]['pt']) . '</td></tr>
-        <tr><td>Special Allowance</td>
-            <td>' . ($post[$i]['Spcl_allowance']) . '</td>
-            <td></td>
-            <td></td></tr>
-        <tr><td><b>(A) Total Earnings</b></td>
-            <td>' . ($post[$i]['a']) . '</td>
-            <td><b>(B) Total Deductions</b></td>
-            <td>' . ($post[$i]['b']) . '</td></tr>
-        <tr><td colspan="3" align="right"><b>Net Salary=(A)-(B)</b></td>
-
-            <td>' . ($post[$i]['net']) . '</td></tr>
-    </table></div></div></html>';
-
+            <table align="center" border="1" >
+                <tr><th>Earnings</th>
+                    <th>Amount</th>
+                    <th>Deductions</th>
+                    <th>Amount</th></tr>
+                <tr><td>Basic</td>
+                    <td>basic</td>
+                    <td>TDS</td>
+                    <td>' . ($post[$i]['tds']) . '</td></tr>
+                <tr><td>HRA</td>
+                    <td>' . ($post[$i]['hra']) . '</td>
+                    <td>PF</td>
+                    <td>' . ($post[$i]['pf']) . '</td></tr>
+                <tr><td>Conveyance Allowance</td>
+                    <td>' . ($post[$i]['conveyance_allowance']) . '</td>
+                    <td>PT</td>
+                    <td>' . ($post[$i]['pt']) . '</td></tr>
+                <tr><td>Special Allowance</td>
+                    <td>' . ($post[$i]['Spcl_allowance']) . '</td>
+                    <td></td>
+                    <td></td></tr>
+                <tr><td><b>(A) Total Earnings</b></td>
+                    <td>' . ($post[$i]['a']) . '</td>
+                    <td><b>(B) Total Deductions</b></td>
+                    <td>' . ($post[$i]['b']) . '</td></tr>
+                <tr><td colspan="3" align="right"><b>Net Salary=(A)-(B)</b></td>
+                    <td>' . ($post[$i]['net']) . '</td></tr>
+            </table></div></div></html>';
+            // $folder = "/var/www/Emp_mvc/uploads/";        
             $mpdf->WriteHTML($html);
-
             if (!file_exists($folder)) {
                 mkdir($folder, 0777);
                 // echo "Directory sucs";
@@ -197,21 +195,18 @@ class Home_model extends Model {
             $mpdf->output($final, 'F');
             $month_slip = trim($post[$i]['month_slip']);
             $year_slip = $post[$i]['year_slip'];
-
             $payslip_month_y = strtotime("1 $month_slip $year_slip");
-
             $d = new DateTime();
-
             $d->setTimestamp($payslip_month_y);
             $d->format('U = Y-m-d H:i:s') . "\n";
-
-
             $sth11 = $this->db->prepare("INSERT INTO slips(email, slip, month_of_payslip, time) VALUES (:useremail, :slip_name, :payslip_month_year, :time)");
             $insert = $sth11->execute(array(':slip_name' => $post[$i]['file_name'],
                 ':useremail' => $email,
                 ':payslip_month_year' => "$month_slip$year_slip",
                 ':time' => strtotime("now")));
         }
+        
+                    
         if ($insert == true) {
             $status = "Pay slip(s) genrated and its uploded to employee(s) desk";
             return $status;
@@ -220,6 +215,54 @@ class Home_model extends Model {
             return $status;
         }
     }
+    
+    
+public function bank_statement(){
+    include 'mpdf/mpdf.php';
+        $mpdf = new mPDF();
+        $post = $_POST["slctd_emp"];
+        $total = 0;
+           for ($i = 0; $i < sizeof($post); $i++) {
+            $total = $total+ $post[$i]['net'];
+           }
+            $email = Session::get('loggedIn');
+            // $file_name = $post[$i]['file_name'];
+            $month = $post[0]['month_slip'];
+            $year = $post[0]['year_slip'];
+            $folder = "/var/www/Emp_mvc/uploads/$email/Bank_statments";
+            $html_bnk_stmnt = '<html><div style="background-image: url(https://localhost:8811/images/letter_head.png); background-position: center; background-repeat: no-repeat; background-size: 100% 100%;"><div style="padding-top: 1%; padding-bottom: 25%;"></div>'
+                    . '<div style="padding-top: 5%; padding-bottom: 25%; padding-left: 12%; font-size: 0.8em;"><p align="right" style="padding-right: 21%;">DT:'.date("d-m-Y").'.</p><p align="left">Ref: VIMPL: SAL: 2014-14:<br><br>'
+                    . 'To,<br>HDFC Bank LTD,<br>2-3-34/8 R, Devilal Complex,<br>Main Road, Uppal Kalan,<br>Hyderabad - 500039<br><br>Sub:Payment of salaries<br>Ref:Our account No. 10427630000537 dt: '.date("d-m-Y").'</p><div align="center">&&&&&&</div>'
+                    . '<p>Dear sir,<br>We are here with enclosing the Ch No. 000248 dt.'.date("d-m-Y").' for Rs.'.$total.'-00 towards salaries<br> as per the statement give bellow:</p>'
+                    . '<div align="left" style="padding-left: 10%;"><table border="1" >
+                      <tr><th>S NO</th>
+                      <th>Name of the Employee</th>
+                      <th>Account no</th>
+                      <th>Salary</th></tr>';
+      for ($i = 0; $i < sizeof($post); $i++) {
+            $html_bnk_stmnt = $html_bnk_stmnt . '<tr><td>'.($i+1).'</td>
+                          <td>' . ($post[$i]['emp_name']) . '</td>
+                          <td>' . ($post[$i]['bank_a/c']) . '</td>
+                          <td>' . ($post[$i]['net']) . '</td></tr>';
+      }         
+            $html_bnk_stmnt = $html_bnk_stmnt . '<tr><td></td><td>Total Ammount</td><td></td><td>'. $total.'</td></tr></table></div><br><br>'
+                    . '<p>Kindly do the needful.</br><br>Thanking you,<br>For VIVEN INFOMEDIA PVT. LTD.,<br><br>MANAGING DIRECTOR.</p></div></div><html>';
+                   $mpdf->WriteHTML($html_bnk_stmnt);
+                    if (!file_exists($folder)) {
+                        mkdir($folder, 0777);
+                        // echo "Directory sucs";
+                    } else {
+                        // echo "Directory creation faild";
+                    }
+                    $rand = rand(1000, 10000);
+                    $filename = "$rand-Bank-statement-$month-$year.pdf";
+                    $final_bank = "$folder/$filename";
+                    $mpdf->output($final_bank, 'F');
+                    $stmenttodb = $this->db->prepare("INSERT INTO bank_statement(statement_name, time) VALUES(:statement_name, :time)");
+                    $stmenttodb->execute(array(':statement_name' => $filename, ':time'=>time()));
+                    $status = [path=> "$final_bank", filename=>"$filename"];
+                    return $status;
+}
 
     public function paid_deatils($em) {
         $year = $_POST['year'];
@@ -232,12 +275,72 @@ class Home_model extends Model {
         $sth_paid_deatils = $this->db->prepare("SELECT * FROM new_emp WHERE emp_email NOT IN (SELECT email FROM slips WHERE month_of_payslip = :payslip_month_y)");
         $insert = $sth_paid_deatils->execute(array(':payslip_month_y' => "$month$year"));
         $res = $sth_paid_deatils->fetchAll(PDO::FETCH_ASSOC);
+    
 
         //$result = print_r($res);
         // return $payslip_month_y;
         return $res;
 
         // array('payslip_date:'=> $_POST['month'].$_POST['year'])
+    }
+    
+    public function updates(){
+        $post_new_updates = $this->db->prepare("INSERT INTO new_updates(new_update, time) VALUES(:update, :time)");
+        $insert = $post_new_updates->execute(array(':update'=> $_POST['post'], ':time'=> time()));
+        if($insert == true){
+            $status = "New Update Posted Successfilly";
+            return $status;
+        }else{
+            $status  = "Somthing wrong while posting new update";
+            return $status;
+        }
+    }
+     public function get_new_update(){
+         $get_new_updates = $this->db->prepare("SELECT * FROM new_updates ORDER BY time DESC LIMIT 1");
+         $insert = $get_new_updates->execute();
+         $resp = $get_new_updates->fetchAll(PDO::FETCH_ASSOC);
+         return $resp; 
+     }
+     
+     public function get_statements(){
+         $get_saatements = $this->db->prepare("SELECT * FROM bank_statement ORDER BY time DESC LIMIT 20");
+         $get_saatements->execute();
+         $result =  $get_saatements->fetchAll(PDO::FETCH_ASSOC);
+         return $result;
+     }
+
+
+     public function empdocs() {
+        $allowedExts = array("pdf", "png", "jpg", "jpeg");
+        $temp = explode(".", $_FILES["empdoc"]["name"]);
+        echo $_FILES["empdoc"]["name"];
+        $extension = end($temp);
+        $folder = "/var/www/Emp_mvc/uploads/";
+        if ((($_FILES["empdoc"]["type"] == "application/pdf") || ($_FILES["empdoc"]["type"] == "application/x-pdf") || ($_FILES["empdoc"]["type"] == "image/png") || ($_FILES["empdoc"]["type"] == "image/jpg") || ($_FILES["empdoc"]["type"] == "image/jpeg")) && ($_FILES["empdoc"]["size"] < 40000000) && in_array($extension, $allowedExts)) {
+            if ($_FILES["empdoc"]["error"] > 0) {
+                echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+            } else {
+                echo $name = $_FILES["empdoc"]["name"] . "<br>";
+                echo "Type: " . $_FILES["empdoc"]["type"] . "<br>";
+                echo "Size: " . ($_FILES["empdoc"]["size"] / 40000) . " kB<br>";
+                echo "Temp file: " . $_FILES["empdoc"]["tmp_name"] . "<br>";
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777);
+                }
+                if (file_exists($folder . $_FILES["empdoc"]["name"])) {
+                    echo $_FILES["empdoc"]["name"] . " already exists. ";
+                } else {
+                    $move = move_uploaded_file($_FILES["empdoc"]["tmp_name"], $folder . $_FILES["empdoc"]["name"]);
+                    echo $folder . $_FILES["empdoc"]["name"];
+                    //$sth2 = $this->db->prepare("UPDATE user SET slip = :name WHERE email = :useremail");
+                    // $sth2 = $this->db->prepare("INSERT INTO slips(email, slip) VALUES (:useremail, :name)");
+                    // $sth2->execute(array(':name' => $_FILES["empdoc"]["name"],
+                    // ':useremail' => $_POST['useremail']));
+                }
+            }
+        } else {
+            echo "Invalid file";
+        }
     }
 
     //    public function mpdf($em) {

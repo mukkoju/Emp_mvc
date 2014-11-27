@@ -2,11 +2,7 @@
         require 'views/header.php';
        // var_dump($this->getLeavesDeatilsByHr);
         // var_dump($this->getLeavesDeatils);?>
-        <div id="main">
-        <div class="container all-content">
-        
-        <div class="main-content">
-            <div class="alert alert-success alert-dismissable">
+            <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" 
                         aria-hidden="true">
                     &times;
@@ -33,7 +29,6 @@
                     <a class="carousel-control right" href="#myCarousel" data-slide="next">
                         <i class="icon-chevron-right-sign"></i>
                     </a>
-
                 </div>
             </div>
             <div class="span5">
@@ -113,7 +108,7 @@
         <div id="resp-popup" class="popupContainer_status" style="display:none;">
             <header class="popupHeader7">
                 <span class="header_title"></span>
-                <span class="modal_close"><i class="fa fa-times"></i></span>
+                <span class="modal_close"></span>
             </header>
 
             <section class="popupBody"></section>

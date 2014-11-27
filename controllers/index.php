@@ -27,7 +27,7 @@ class Index extends Controller {
             echo $temp;
         }
         else{
-            echo "https://localhost:8811/home/index";
+            echo "https://localhost:8811/home";
         }
         
     }

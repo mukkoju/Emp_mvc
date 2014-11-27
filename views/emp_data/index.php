@@ -1,7 +1,14 @@
 <?php require 'views/header.php'; ?>
 
-<div id="all_emp" data-complete = <?php echo "'".json_encode($this->all_user_details)."'"; ?> >
-    <table border="2" style="width: 1000px; height: auto">
+            
+    <div class="post-uodate">
+                <h2 class="apply">Post new Update</h2><br>
+                <textarea style="width: 50%;" placeholder="Notice:" id="post-txt"></textarea>
+                <button class="btn btn-info" value="POST" id="post-butn" type="button" style="color: #FF7171;">Post</button>
+            </div>        
+    <div id="all_emp" data-complete = <?php echo "'".json_encode($this->all_user_details)."'"; ?> >
+    <div class="overflow">
+        <table class="table table-hover table-condensed table-bordered">
         <tr><th>Name</th>
             <th>Emp Id</th>
             <th>Email</th>
@@ -14,8 +21,6 @@
             <th>Upload Payslip</th>
         </tr>
         <tr>
-            <?php $hai = $this->due_deatils;
-            var_dump($hai);?>
             <?php $row = $this->all_user_details; ?>
             <?php for ($i = 0; $i < sizeof($row); $i++) { ?>
                 <td align="center"><?php echo $row[$i]['emp_name']; ?></td>
@@ -30,7 +35,7 @@
                 <td align="center"><a href="#payslip-popup" id="<?php echo $i; ?>" class ="modal_trigger7 upld-slip">Upload Payslip</a></td>
             </tr>
             <tr>
-                <td>
+                <td hidden>
                     <!--  Hidden for a while-->
                     <div id="<?php //echo $i;  ?>" class="popupContainer_all pop_cont" style="display:none;">
                         <header class="popupHeader6">
@@ -77,7 +82,7 @@
                     <div id="payslip-popup" class="popupContainer" style="display:none;">
                         <header class="popupHeader6">
                             <span class="header_title">Upload Payslip</span>
-                            <span class="modal_close"><i class="fa fa-times"></i></span>
+                            <span class="modal_close"></span>
                         </header>
 
                         <section class="popupBody">
@@ -171,18 +176,20 @@
             </tr>
         <?php } ?>
     </table>
-    
+    </div>
 </div>
 <!--success pop up's area-->
 <a id= "btn-trgr" href="#resp-popup" class="modal_trigger_status" hidden></a>
 <div id="resp-popup" class="popupContainer_status" style="display:none;">
             <header class="popupHeader7">
                 <span class="header_title"></span>
-                <span class="modal_close"><i class="fa fa-times"></i></span>
+                <span class="modal_close"></span>
             </header>
     <section class="popupBody"></section>
 </div>
-
+        </div>
+        </div>
+        </div>
 <script type="text/javascript">
     $(".modal_trigger7").leanModal({top: 50, overlay: 0.2, closeButton: ".modal_close"});
     $(".modal_trigger_status").leanModal({top: 150, overlay: 0.2, closeButton: ".modal_close"});

@@ -1,15 +1,5 @@
 <?php require 'views/header.php'; ?>
-<div id="main">
-    <div class="container all-content">
-        <div class="main-content">
-            <div class="alert alert-success alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" 
-                        aria-hidden="true">
-                    &times;
-                </button>
-                <span><b>Notice:</b> Thank you everyone for making #Changemakers such a wonderful event.</span>
-                <span class="alert-desc" style="display: block"></span>
-            </div>
+
             <div class="span8 left-cntnt">
                 <div id="myCarousel" class="carousel slide">
                     <div class="carousel-inner">
@@ -34,13 +24,13 @@
             <div class="span5 overflow">
             <div class="tbl-hdr"><h2>Download Payslips</h2></div>
             <table border="2" class="table table-hover table-condensed table-bordered">
-                <tr><th>payslip</th>
-                    <th>download</th>
+                <tr><th>Payslip</th>
+                    <th>Get</th>
                 </tr>
                 <?php $row = $this->get_slips; ?>
                 <?php for ($i = 0; $i < sizeof($row); $i++) { ?>
                     <tr><td align="center"><?php echo $row[$i]['slip']; ?></td>
-                        <td align="center"><a href="/download/down_slips/<?php echo $row[$i]['slip']; ?>">Download</a></td>
+                        <td class='dwnld'><a href="/download/down_slips/<?php echo $row[$i]['slip']; ?>"><i class="icon-download"></i></a></td>
                     </tr>
                 <?php } ?>
             </table>

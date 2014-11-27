@@ -1,15 +1,5 @@
 <?php require 'views/header.php'; ?>
-<div id="main">
-    <div class="container all-content">
-        <div class="main-content">
-            <div class="alert alert-success alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" 
-                        aria-hidden="true">
-                    &times;
-                </button>
-                <span><b>Notice:</b> Thank you everyone for making #Changemakers such a wonderful event.</span>
-                <span class="alert-desc" style="display: block"></span>
-            </div>
+
 <!--<script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -52,7 +42,7 @@ FB.getLoginStatus(function(response) {
    }(document, 'script', 'facebook-jssdk'));
 </script>
 <h1 id="fb-welcome"></h1>-->
-<div class="salaries span16 table-responsive">
+<div class="salaries span8 table-responsive">
     <select id="slct-year"></select>
     <select id='slct-month'>
     <option value=''>--Select Month--</option>
@@ -118,6 +108,17 @@ FB.getLoginStatus(function(response) {
 </table>
     <input type="button" id="process" class="btn btn-info" value="Process"name="textarea_hidden" style="color: black;">
 </div>
+<div class="span5 overflow">
+            <div class="tbl-hdr"><h2>Download Bank Statements</h2></div>
+            <table border="2" class="table table-hover table-condensed table-bordered" id="bank_stmnt-table">
+                <tr><th style="text-align: center;">Statements</th>
+                    <th style="text-align: center;">Get</th>
+                </tr>
+                <tr class="td-apndg-bnk-stmnt">
+                    
+                </tr>
+            </table>
+            </div>
 <!--<div style="float: left">
  <ol id="addhereform">
      <li><?php // echo strtotime("1 January 2014")?> <?php // echo strtotime("1 January 2014")?></li>
