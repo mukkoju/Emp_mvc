@@ -4,13 +4,16 @@
 
       function __construct() {
           parent::__construct();
-          Session::init();
+//          Session::init();
         $logged = Session::get('loggedIn');
-
         if ($logged == false) {
             Session::destroy();
             header('location: ../index');
             exit();
+        }
+        if($_SESSION['loggedIn'] !== HR){
+            header('location: ../error');
+            return;
         }
         }
 
@@ -18,8 +21,6 @@
             $this->view->user_details = $this->global->getUserDetails($_SESSION['loggedIn']);
             $this->view->all_user_details = $this->global->getAllUserDetails();
             $this->view->render('emp_data/index');
-            
-            
         }
         
         public function mail(){
@@ -28,7 +29,7 @@
             if($mail == true){
                 echo "sucess";
             }  else {
-            echo "not send";    
+               echo "not send";    
             }
             
             

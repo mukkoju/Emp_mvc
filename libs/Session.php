@@ -20,7 +20,8 @@ class Session {
     
     public static function destroy(){
         
-        // unset($_SESSION)
+        session_unset();
+        $_SESSION['loggedIn'] = false;
         session_destroy();
     }
 

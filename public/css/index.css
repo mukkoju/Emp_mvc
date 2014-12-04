@@ -1,32 +1,46 @@
 body{
-    background-image: url("https://localhost:8811/images/sav.jpg");
+    /*background-image: url("/images/sav.jpg");*/
     background-size: 1300px, 1500px;
 }
 
 #table{
     padding-top: 40px;
-    padding-left: 450px;
-
+    /*padding-left: 450px;*/
+    float: right;
+    
 }
 
-
+.main-container{
+/*    float: right;*/
+}
 .box{
+    margin-top: 30%;
     padding-top: 20px;
-    padding-left: 50px;
+    padding-left: 40px;
     width: 300px;
-    height: auto;
+    height: 42%;
     box-sizing: border-box;
     background-color: white;
     box-shadow: 10px 10px 10px #red;
-    border-radius: 25px;
+    border-radius: 15px;
 }
 
 .login{
-    padding-bottom: 20px;
-    font-size: x-large;
-    font-family: Georgia;
-    padding-left: 40px;
-    color:#2E8AE6;
+    padding-bottom: 10px;
+    font-size: 1.6em;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    padding-left: 25px;
+    /*color:#333;*/
+    color: #635D5D;
+}
+
+.logn-icon i{
+font-size: 2em;
+color: #635D5D;
+padding-left: 80px;
+padding-bottom: 25px;
+background-position: 100px;
 }
 
 .tab-content {
@@ -36,4 +50,33 @@ body{
 display: block!important;
 margin-bottom: 0x;
 font-weight: normal 1important;
+}
+
+.btn-login-indx{
+margin-top: 5px;
+margin-left: 21%;
+color: #ff4141!important ; 
+background-color: white !important;
+border: 1px solid #ff4141!important;
+padding-top: 5px !important;
+padding-bottom: 5px !important;
+}
+.btn-login-indx:hover{
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #e3000f !important;
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #e3000f !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #e3000f !important;
+}
+#logo {
+margin-top: 1.2%;
+margin-left: 50%
+width: 200px;
+height: 40px;
+background: url(/images/logo.png) no-repeat center;
+display: block;
+
+}
+.inpt-logn{
+    height: 30px !important;
+    border-radius: 0 !important;
+    width: 220px !important;
 }

@@ -5,7 +5,7 @@ class Leaves extends Controller {
     function __construct() {
         parent::__construct();
         // saessions area
-        Session::init();
+//        Session::init();
         $logged = Session::get('loggedIn');
 
         if ($logged == false) {

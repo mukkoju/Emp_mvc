@@ -42,7 +42,7 @@ FB.getLoginStatus(function(response) {
    }(document, 'script', 'facebook-jssdk'));
 </script>
 <h1 id="fb-welcome"></h1>-->
-<div class="salaries span8 table-responsive">
+<div class="salaries span7 table-responsive">
     <select id="slct-year"></select>
     <select id='slct-month'>
     <option value=''>--Select Month--</option>

@@ -30,26 +30,18 @@ class Index_model extends Model {
         }
     }
 
-    public function run($em,$pw) {
-        
+    public function run($em, $pw) {
         $sth = $this->db->prepare("SELECT * FROM new_emp WHERE emp_email = :email AND password = :password");
         $sth->execute(array(
-            ':email' => $em,
-            ':password' => md5($pw)));
+           ':email' => $em,
+           ':password' => md5($pw)));
            $row = $sth->rowCount();
-           
            $result = $sth->fetchAll(PDO::FETCH_ASSOC);   
-         
-           
-           
         if ($row > 0) {
-            Session::init();
             Session::set('loggedIn', $em);
-            
         } else {
            $err = "Incorect email or password";
            return $err;
-            
                    }
         
     }

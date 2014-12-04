@@ -40,6 +40,8 @@ class Leaves_model extends Model {
         return $status;
     }
     public function manger_status() {
+        $aprve_time = $this->db->prepare("UPDATE leaves SET manager_aprve_tme = :manager_aprve_tme WHERE id = :id");
+        $insert = $aprve_time->execute(array(':manager_aprve_tme' => time(), ':id' => $_POST['id']));
         $sth9 = $this->db->prepare("UPDATE leaves SET manager_status = :manager_status WHERE id = :id");
         $manager_status = $sth9->execute(array(':id' => $_POST['id'],
             ':manager_status' => $_POST['mngr_status']));

@@ -5,7 +5,7 @@
       function __construct() {
           parent::__construct();
           // saessions area
-        Session::init();
+//        Session::init();
         $logged = Session::get('loggedIn');
 
         if ($logged == false) {
@@ -36,5 +36,15 @@
         $this->model->down_slips($file_path, $file_name, "image/png");
         $this->view->render('download/index');
     }
+    
+    public function down_docs($file_name){
+        $filename = explode("&", $file_name);
+        $folder_name =  Session::get('loggedIn');
+        $file_path="/var/www/Emp_mvc/uploads/".$filename[0]."/docs/".$filename[1];
+        echo "$file_path";
+        $this->model->down_docs($file_path, $filename[1], "image/png");
+        $this->view->render('download/index');
+    }
+    
     
 }

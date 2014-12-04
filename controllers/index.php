@@ -4,19 +4,21 @@ class Index extends Controller {
 
     function __construct() {
         parent::__construct();
-
-        //     Session::init();
-        $logged1 = Session::get('LoggedIn');
-        if ($logged1 == true) {
-            header('location: ../home');
-            exit();
-        }
+        
+        
 
         // echo "index(login page)";
+//        echo $_SESSION['loggedIn'];
     }
 
     public function index() {
-
+//        var_dump($_SESSION['loggedIn']);
+        if($_SESSION['loggedIn']){
+//            Session::init();
+            $logged = Session::get('loggedIn');
+            header('location: ../home');
+            exit();
+        }
         $this->view->render('index/index');
     }
 
@@ -27,7 +29,7 @@ class Index extends Controller {
             echo $temp;
         }
         else{
-            echo "https://localhost:8811/home";
+            echo URL."home";
         }
         
     }

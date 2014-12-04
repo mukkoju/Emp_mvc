@@ -1,6 +1,6 @@
 <?php require 'views/header.php'; ?>
 
-            <div class="span8 left-cntnt">
+            <div class="span7 left-cntnt">
                 <div id="myCarousel" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="active item">

@@ -36,20 +36,26 @@
                             <li class="dropdown"><a href="/home" class="current">HOME</a></li>
                             <li class="dropdown"><a href="/leaves">LEAVES</a></li>
                             <li class="dropdown"><a href="/download">DOWNLOADS</a></li>
+                            <?php if($this->user_details[0]['designation'] == HR_MANAGER){ ?>
                             <li class="dropdown-submenu"><a href="" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" rel="nofollow">HR</a>
                                 <ul class="dropdown-menu hr-dropdwn pull-right" role="menu" aria-labelledby="dLabel">
                                     <li class="dropdown"><a href="/salaries">SALARIES</a></li>
                                     <li class="dropdown"><a href="#model_reg" class="modal_trigger6">NEW EMP</a></li>
                                     <li class="dropdown"><a href="#model_doc" class="modal_trigger6">EMP DOCS</a></li>
-                                    <li class="dropdown"><a href="/home/logout">EXIT SETTILEMENT</a></li>
+                                    <li class="dropdown"><a href="#">EXIT SETTILEMENT</a></li>
                                     <li class="dropdown"><a href="/emp_data">ALL EMP</a></li>
                                 </ul>
                             </li>
+                            <?php }?>
                             <li class="dropdown"><a href="/home/logout">LOGOUT</a></li>
                             <li class="usr-pic-name-hdr"><a href="#model" id="modal_trigger12">
+                                   <?php $mail = $_SESSION['loggedIn']; 
+                                   $profile_img = "/var/www/Emp_mvc/uploads/$mail/profile_pic";
+                                   $image_name = scandir($profile_img);
+                                   $image_name = $image_name[2];
+                                   ?>
                                     <?php $email = $this->user_details[0]['emp_email']; ?>
-                                    <?php $profile = "/uploads/$email/profile.jpg"; ?>
-                                    <?php if (!file_exists("$profile")) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/uploads/<?php echo $this->user_details[0]['emp_email']; ?>/profile.jpg' class="profile-avtr"><?php } ?> <?php echo $this->user_details[0]['emp_name']; ?></a>
+                                    <?php if (!file_exists("$profile_img/$image_name")) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/uploads/<?php echo $email?>/profile_pic/<?php echo $image_name?>' class="profile-avtr"><?php } ?> <?php echo $this->user_details[0]['emp_name']; ?></a>
                                 <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow"><span class="caret"></span></a>
                             </li>
                         </ul>
@@ -60,19 +66,27 @@
                     <li><a href="/home" class="current">HOME</a></li>
                     <li><a href="/leaves">LEAVES</a></li>
                     <li><a href="/download">DOWNLOADS</a></li>
+                    <?php if($this->user_details[0]['designation'] == HR_MANAGER){ ?>
                     <li class="dropdown"><a href="" id="dLabel" class="dropdown-toggle" role="button" data-toggle="dropdown" data-target="#" rel="nofollow">HR<span class="caret"></span></a>
                         <ul class="dropdown-menu hr-dropdwn" role="menu" aria-labelledby="dLabel">
                             <li class="dropdown"><a href="/salaries">SALARIES</a></li>
                             <li class="dropdown"><a href="#model_reg" class="modal_trigger6">NEW EMP</a></li>
                             <li class="dropdown"><a href="#model_doc" class="modal_trigger6">EMP DOCS</a></li>
-                            <li class="dropdown"><a href="/home/logout">EXIT SETTILEMENT</a></li>
+                            <li class="dropdown"><a href="#">EXIT SETTILEMENT</a></li>
                             <li class="dropdown"><a href="/emp_data">ALL EMP</a></li>
                         </ul>
                     </li>
+                    <?php }?>
                     <li class="usr-pic-name-hdr hidden-phone"><a href="#model" id="modal_trigger1">
+                            <?php $mail = $_SESSION['loggedIn']; 
+                        $profile_img = "/var/www/Emp_mvc/uploads/$email/profile_pic";
+                        if(file_exists($profile_img)){
+                         $image_name = scandir($profile_img);
+                        }
+                         $image_name = $image_name[2];
+                                ?>
                             <?php $email = $this->user_details[0]['emp_email']; ?>
-                            <?php $profile = "/uploads/profile.jpg"; ?>
-                            <?php if (!file_exists($profile)) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/images/<?php $email?>/profile.jpg' class="profile-avtr"><?php } ?> <?php echo $this->user_details[0]['emp_name']; ?></a>
+                            <?php if (!file_exists("$profile_img/$image_name")) { ?><img src='/images/avtr.jpg' class="profile-avtr"><?php } else { ?><img src='/uploads/<?php echo $email?>/profile_pic/<?php echo $image_name?>' class="profile-avtr"><?php } ?> <?php echo $this->user_details[0]['emp_name']; ?></a>
                         <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#" rel="nofollow"><span class="caret"></span></a>
                         <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
                             <li class="dropdown"><a href="/home/logout">LOGOUT</a></li>
@@ -81,7 +95,6 @@
                 </ul>
             </nav>
         </header>
-
         <div id="model" class="popupContainer1 pop_cont" style="display:none;">
             <header class="popupHeader6">
                 <span class="header_title">Look at your Profile</span>
@@ -90,11 +103,17 @@
 
                 <section class="popupBody">
                     <div class="profile_img">
-                        <?php if (file_exists("$profile")) { ?>
-                            <img height="900px" width="250px" src="$profile"/>
-                        <?php } else { ?>
-                            <img height="900px" width="250px" src="/images/avtr.jpg"/>
-                        <?php } ?>
+                        <?php $mail = $_SESSION['loggedIn']; 
+                        $profile_img = "/var/www/Emp_mvc/uploads/$email/profile_pic";
+                        if(file_exists($profile_img)){
+                         $image_name = scandir($profile_img);
+                        }
+                         $image_name = $image_name[2];?>
+                        <?php if(file_exists("$profile_img/$image_name")){ ?>
+                        <img src="/uploads/<?php echo $email?>/profile_pic/<?php echo $image_name?>" id="profile_image_style"/><input type="file" class="profile-img-change-input" id="p-pic-change"><i class="icon-add-image"></i>
+                        <?php }else{?>
+                        <img src="/images/avtr.jpg" id="profile_image_style"/><input type="file" class="profile-img-change-input" id="p-pic-change"><i class="icon-add-image"></i>
+                        <?php }?>
                     </div>
                     <div class="profile"><h4><img height="60px" width="30px" src="/images/king.png"/>&nbsp;<?php echo $this->user_details[0]['emp_name']; ?></h4>
                         <p>Email:<span style="padding-left: 50px"><?php echo $this->user_details[0]['emp_email']; ?></span></p>
@@ -229,11 +248,21 @@
             </header>
             <section class="popupBody">
                 <div><form id="docs-form" enctype="multipart/form-data">
-                                <label>Employee Email:<br><input type="email" placeholder="Mail id of employe" style="height: 30px; width: 250px;"></label>
-                                <label>Select Document:<input type="file" name = "empdoc" id="docs-file"></label>
+                        <p id="upload-doc-err"></p>
+                        <label>Employee Email:<br><input type="email" name="emp_doc_email" id="emp-doc-emial" class="emp-doc-emial" placeholder="Mail id of employe" style="height: 30px; width: 250px;"></label>
+                        <label>Select Document:<br><input type="file" name = "empdoc" id="docs-file1" style="display: inline-block;">
+                                    <select class="slct-month">
+                                        <option value='0' selected>--Select Doc type--</option>
+                                        <option value="1">10th</option>
+                                        <option value="2">Bachelor</option>
+                                        <option value="3">Experience</option>
+                                        <option value="4">Address</option>
+                                        <option value="4">Other</option>
+                                    </select><a href="#"><i class="icon-plus-strong" id="pluse-doc" style="margin-left: 5%;"></i></a>
+                                </label>
                                 <button class="btn btn-info" value="POST" id="upload-docs-butn" type="button" style="color: #FF7171;">Upload</button>
                        </form>
-                       <progress></progress>
+                       <!--<progress></progress>-->
                 </div>
             </section>
         </div>

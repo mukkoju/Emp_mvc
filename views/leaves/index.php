@@ -1,11 +1,11 @@
 <?php require 'views/header.php'; ?>
-            <div class="span8 left-cntnt">
+            <div class="span7 left-cntnt">
             <div class="apply_form" id="aply">
                 <h2 class="apply">Apply leave Here</h2><br>
                 <p class="val_err"></p>
                 <form name="leave_apply_form">
                     <label class="form_txt">Subject:</br><textarea name="sub" style="width: 90%"placeholder="Ex: Request for leave"></textarea></label>
-                    <div style="float: left; padding-right: 23%; "><label>From:<br/><input type="date" name="from" style="height: 30px;"/></label></div>
+                    <div style="float: left; padding-right: 28%; "><label>From:<br/><input type="date" name="from" style="height: 30px;"/></label></div>
                     <div style="float: left;"><label>To:<br/><input type="date" name="to" style="height: 30px;"/></label></div>
                     <div ><label>Description:</br><textarea name="dec" style="width: 90%; height: 150px;"placeholder="Reason for leave"></textarea></label></div>    
                     <input hidden value="<?php echo $this->user_details[0]['emp_name']; ?>" name="emp_name">
@@ -34,7 +34,7 @@
                                 <td><a href="#<?php echo $i; ?>" class="modal_trigger5"><?php echo $row[$i]['fromdate']; ?></a></td>
                                 <td><?php echo $row[$i]['subject']; ?></td>
                                 <td><?php echo $row[$i]['status']; ?></td>
-                            <div id="<?php echo $i; ?>" class="popupContainer6 pop_cont" style="display:none;">
+                                <div id="<?php echo $i; ?>" class="popupContainer6 pop_cont" style="display:none;">
                                 <header class="popupHeader6">
                                     <span class="header_title">Leave Application</span>
                                     <span class="modal_close"></span>

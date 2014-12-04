@@ -18,8 +18,7 @@ class Home_model extends Model {
     public function getLeavesDeatils($em) {
         $date = date("j-n-Y");
 
-
-        $sth6 = $this->db->prepare("SELECT * FROM leaves ORDER BY apply_date DESC");
+        $sth6 = $this->db->prepare("SELECT * FROM leaves ORDER BY id DESC");
         $sth6->execute(array(
             ':date' => $date));
         // print_r($sth6->errorInfo());
@@ -32,7 +31,7 @@ class Home_model extends Model {
         $date = date("j-n-Y");
 
 
-        $sth6 = $this->db->prepare("SELECT * FROM leaves WHERE manager_status = 'Approved' ORDER BY apply_date DESC");
+        $sth6 = $this->db->prepare("SELECT * FROM leaves WHERE manager_status = 'Approved' ORDER BY manager_aprve_tme DESC");
         $sth6->execute();
         // print_r($sth6->errorInfo());
         $row = $sth6->rowCount();
@@ -41,7 +40,6 @@ class Home_model extends Model {
     }
 
     public function register() {
-
         $sth8 = $this->db->prepare("INSERT INTO new_emp(emp_name, emp_id, emp_email, password, phone_no, dob, fathername, mothername, age, bloodgroup, address, "
                 . "            gender, spousename, emr_name, emr_relation, emr_phone, emr_email, designation, department, bank_account, pf_account, pan, ifsc_code, basic_salarie) "
                 . "                VALUE(:emp_name, :emp_id, :emp_email, :password, :phone_no, :dob, :fathername, :mothername,"
@@ -311,35 +309,93 @@ public function bank_statement(){
 
 
      public function empdocs() {
-        $allowedExts = array("pdf", "png", "jpg", "jpeg");
-        $temp = explode(".", $_FILES["empdoc"]["name"]);
-        echo $_FILES["empdoc"]["name"];
+        $allowedExts = array("pdf", "png", "jpg", "jpeg", "JPG", "JPEG");
+        $i = 1;
+        if($_POST["eml"] == ''){
+            $err = "Email cannot be empty";
+            return $err;
+        }
+//        var_dump($_FILES);
+        foreach ($_FILES as $file) {
+           //echo $file["name"]; 
+           $temp = explode(".", $file["name"]);
+          $file["name"]; 
+//          echo $_POST["doctype$i"];
+        $email =  $_POST["eml"];
         $extension = end($temp);
-        $folder = "/var/www/Emp_mvc/uploads/";
-        if ((($_FILES["empdoc"]["type"] == "application/pdf") || ($_FILES["empdoc"]["type"] == "application/x-pdf") || ($_FILES["empdoc"]["type"] == "image/png") || ($_FILES["empdoc"]["type"] == "image/jpg") || ($_FILES["empdoc"]["type"] == "image/jpeg")) && ($_FILES["empdoc"]["size"] < 40000000) && in_array($extension, $allowedExts)) {
-            if ($_FILES["empdoc"]["error"] > 0) {
-                echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+        $folder = "/var/www/Emp_mvc/uploads/$email/docs/";
+        if ((($file["type"] == "application/pdf") || ($file["type"] == "application/x-pdf") || ($file["type"] == "image/png") || ($file["type"] == "image/jpg") || ($file["type"] == "image/jpeg")|| ($file["type"] == "image/JPG") || ($file["type"] == "image/JPEG")) && ($file["size"] < 40000000) && in_array($extension, $allowedExts)) {
+            if ($file["error"] > 0) {
+                $mpty = "Selece max one file" .$file['error'];
+                return $mpty;
             } else {
-                echo $name = $_FILES["empdoc"]["name"] . "<br>";
-                echo "Type: " . $_FILES["empdoc"]["type"] . "<br>";
-                echo "Size: " . ($_FILES["empdoc"]["size"] / 40000) . " kB<br>";
-                echo "Temp file: " . $_FILES["empdoc"]["tmp_name"] . "<br>";
+                 $name = $file["name"] . "<br>";
+                 "Type: " . $file["type"] . "<br>";
+                 "Size: " . ($file["size"] / 40000) . " kB<br>";
+                 "Temp file: " . $file["tmp_name"] . "<br>";
                 if (!file_exists($folder)) {
                     mkdir($folder, 0777);
                 }
-                if (file_exists($folder . $_FILES["empdoc"]["name"])) {
-                    echo $_FILES["empdoc"]["name"] . " already exists. ";
+                if (file_exists($folder . $file["name"])) {
+                   echo $file["name"] . " already exists. ";
                 } else {
-                    $move = move_uploaded_file($_FILES["empdoc"]["tmp_name"], $folder . $_FILES["empdoc"]["name"]);
-                    echo $folder . $_FILES["empdoc"]["name"];
-                    //$sth2 = $this->db->prepare("UPDATE user SET slip = :name WHERE email = :useremail");
-                    // $sth2 = $this->db->prepare("INSERT INTO slips(email, slip) VALUES (:useremail, :name)");
-                    // $sth2->execute(array(':name' => $_FILES["empdoc"]["name"],
-                    // ':useremail' => $_POST['useremail']));
+                    $move = move_uploaded_file($file["tmp_name"], $folder . str_replace(" ", "-", $file["name"]));
+                     $folder . $file["name"];
                 }
+                $scs = "Documents uploaded successfully!!";
+                return $scs;
             }
         } else {
-            echo "Invalid file";
+            $invalid =  'Invalid image format. Only pdf, jpg, jpeg, and png are allowed.';
+                return $invalid; 
+        }
+        $i++;
+        }
+        
+//        while($file != NULL ){
+//          
+//          $i++;    
+//          if($i > 10)
+//              break;
+//        }
+        
+        
+        
+    }
+    
+    public function profile_pic($email){
+        $file = $_FILES['p-pic-change'];
+        $allowedExts = array("png", "jpg", "jpeg", "JPG", "JPEG");
+        $temp = explode(".", $file["name"]);
+        $extension = end($temp);
+        $folder = "/var/www/Emp_mvc/uploads/$email/profile_pic/";
+        if ((($file["type"] == "application/pdf") || ($file["type"] == "application/x-pdf") || ($file["type"] == "image/png") || ($file["type"] == "image/jpg") || ($file["type"] == "image/jpeg")|| ($file["type"] == "image/JPG") || ($file["type"] == "image/JPEG")) && ($file["size"] < 40000000) && in_array($extension, $allowedExts)) {
+            if ($file["error"] > 0) {
+                $mpty = "Selece max one file" .$file['error'];
+                return $mpty;
+            } else {
+                 $name = $file["name"] . "<br>";
+                 "Type: " . $file["type"] . "<br>";
+                 "Size: " . ($file["size"] / 40000) . " kB<br>";
+                 "Temp file: " . $file["tmp_name"] . "<br>";
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777);
+                }
+                if (file_exists($folder . $file["name"])) {
+                   echo $file["name"] . " already exists. ";
+                } else {
+                    $finalname = "/var/www/Emp_mvc/uploads/$email/profile_pic/";
+                    array_map('unlink', glob("$finalname/*"));
+                    $move = move_uploaded_file($file["tmp_name"], $folder . str_replace(" ", "-", "Profile_pic.$extension"));
+                     $folder . $file["name"];
+                    
+                }
+                $retrnimg = "/uploads/$email/profile_pic/Profile_pic.$extension";
+                return $retrnimg;
+            }
+        } else {
+            $invalid =  'Invalid image format. Only pdf, jpg, jpeg, and png are allowed.';
+                return $invalid; 
         }
     }
 

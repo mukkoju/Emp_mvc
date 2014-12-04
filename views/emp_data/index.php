@@ -1,11 +1,10 @@
 <?php require 'views/header.php'; ?>
-
-            
     <div class="post-uodate">
                 <h2 class="apply">Post new Update</h2><br>
                 <textarea style="width: 50%;" placeholder="Notice:" id="post-txt"></textarea>
                 <button class="btn btn-info" value="POST" id="post-butn" type="button" style="color: #FF7171;">Post</button>
-            </div>        
+            </div>      
+    <h2 class="apply">Employees Zone</h2><br>
     <div id="all_emp" data-complete = <?php echo "'".json_encode($this->all_user_details)."'"; ?> >
     <div class="overflow">
         <table class="table table-hover table-condensed table-bordered">
@@ -18,7 +17,7 @@
             <th>Designation</th>
             <th>Department</th>
 <!--            <th>View full details</th>-->
-            <th>Upload Payslip</th>
+            <th>Documents zip</th>
         </tr>
         <tr>
             <?php $row = $this->all_user_details; ?>
@@ -32,47 +31,36 @@
                 <td align="center"><?php echo $row[$i]['designation']; ?></td>
                 <td align="center"><?php echo $row[$i]['department']; ?></td>
 <!--                <td align="center"><a href="#<?php echo $i; ?>" class="modal_trigger7">View full</a></td>-->
-                <td align="center"><a href="#payslip-popup" id="<?php echo $i; ?>" class ="modal_trigger7 upld-slip">Upload Payslip</a></td>
+                <td align="center" class="dwnld"><a href="#<?php echo $i; ?>" class="modal_trigger7"><i class="icon-download"></i></a></td>
             </tr>
             <tr>
-                <td hidden>
-                    <!--  Hidden for a while-->
-                    <div id="<?php //echo $i;  ?>" class="popupContainer_all pop_cont" style="display:none;">
+                <td>
+                    <div id="<?php echo $i;  ?>" class="popupContainer_all pop_cont" style="display:none;">
                         <header class="popupHeader6">
-                            <span class="header_title"><?php echo $row[$i]['emp_name']; ?></span>
+                            <span class="header_title"><?php echo $row[$i]['emp_name']; ?> Documents</span>
                             <span class="modal_close"></span>
                         </header>
-
                         <section class="popupBody6">
-                            <div class="profile_img1">
-
-                                <img class="img_class" height="900px" width="250px" src="/images/kkk@gmail.com/<?php // echo $this->user_details[0]['emp_email'];  ?>/profile.jpg"/>                    
-                            </div>
-                            <div class="emr_details">
-                                <p><span style="padding-left: 50px"><img style="padding-bottom: 10px" height="60px" width="30px" src="/images/king1.png"/>&nbsp;<b><font size="4" color="#663300"><?php echo $row[$i]['emp_name']; ?></font></b></span></p>
-                                <p><span style="padding-left: 50px">Emaplyee Id:</span></span><span style="padding-left: 20px"><?php echo $this->user_details[0]['emp_id']; ?></span></p>
-                                <p><span style="padding-left: 100px"><img src="/images/mail.png" style="height: 32px; width: 32px;"></span></span><span style="padding-left: 20px"><?php echo $this->user_details[0]['emp_email']; ?></span></p>
-                                <p><span style="padding-left: 99px"><img src="/images/phone1.png" style="height: 32px; width: 32px;"></span><span style="padding-left: 20px"><?php echo $this->user_details[0]['phone_no']; ?></span></p>
-                                <p><span style="padding-left: 47px">Father name:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['fathername']; ?></span></p>
-                                <p><span style="padding-left: 42px">Mother Name:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['mothername']; ?></span></p>
-                                <p><span style="padding-left: 80px">Gender:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['gender']; ?></span></p>
-
-                                <p><span style="padding-left: 50px">Date of birth:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['dob']; ?></span></p>
-
-                            </div>
-                            <div class="emr_details_all">
-                                <p><span style="padding-left: 75px">Age:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['age']; ?></span></p>
-                                <p><span style="padding-left: 25px">Blood group:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['bloodgroup']; ?></span></p>
-                                <p><span style="padding-left: 50px">Address:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['address']; ?></span></p>
-                                <p><span style="padding-left: 54px">Spouse:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['spousename']; ?></span></p>
-                                <p><span style="padding-left: 27px">Designation:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['designation']; ?></span></p>
-                                <p><span style="padding-left: 27px">Department:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['department']; ?></span></p>
-                                <p><span style="padding-left: 63px">Name:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['emr_name']; ?></span></p>
-                                <p><span style="padding-left: 50px">Relation:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['emr_relation']; ?></span></p>
-                                <p><span style="padding-left: 40px">Phone no:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['emr_phone']; ?></span></p>
-                                <p><span style="padding-left: 67px">Email:</span><span style="padding-left: 20px"><?php echo $this->user_details[0]['emr_email']; ?></span></p>
-
-                            </div>
+                           <?php $dir = "/var/www/Emp_mvc/uploads/".$row[$i]['emp_email']."/docs";
+                                   $scan = scandir($dir);
+                                   $s = 1;?>
+                            <table style="margin: auto;">
+                                        <tr>
+                                            <th>S no.</th>
+                                            <th>Doc name</th>
+                                            <th>Download</th>
+                                        </tr>
+                                <?php for($f=2; $f<sizeof($scan); $f++){?>
+                                <tr>
+                                 <td><?php echo $s?></td>
+                                <td class="doc_dwnld_style"><?php echo $scan[$f] ?></td>
+                                <td align="center" class="dwnld"><a href="/download/down_docs/<?php echo $row[$i]['emp_email']; ?>&<?php echo $scan[$f] ?>" class="modal_trigger7"><i class="icon-download"></i></a></td>
+                                </tr>
+                            <?php  $s++;}?>
+                            </table>
+                             <?php if(!is_dir($dir)){?>
+                            <p style="color: red; padding-top: 25px;">We couldn't find any documents!!</p>
+                            <?php }?>
                         </section>
                     </div>
                     <!--        // hidden for while-->

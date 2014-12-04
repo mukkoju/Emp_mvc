@@ -4,12 +4,16 @@ class Salaries extends Controller{
     function __construct() {
         parent::__construct();
         // sessions area
-        Session::init();
+//        Session::init();
         $logged = Session::get('loggedIn');
         if ($logged == false) {
             Session::destroy();
             header('location: ../index');
             exit();
+        }
+        if($_SESSION['loggedIn'] !== HR){
+            header('location: ../error');
+            return;
         }
     }
     public function index(){

@@ -8,10 +8,10 @@
                     &times;
                 </button>
                 <?php $row = $this->getLeavesDeatilsByHr;?>
-                <?php echo $row[0]['emp_name']; ?> Applied a leave. On <span><?php echo $row[0]['apply_date']; ?></span>
+                <b><?php echo $row[0]['emp_name']; ?></b> Applied a leave. On <span><?php echo $row[0]['apply_date']; ?></span>
                 <span class="alert-desc" style="display: block"><?php echo $row[0]['description']; ?></span>
             </div>
-            <div class="span8 left-cntnt">
+            <div class="span7 left-cntnt">
                 <div id="myCarousel" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="active item">
@@ -34,14 +34,14 @@
             <div class="span5">
             <div id="all_leaves_hr" data-complete = <?php echo "'" . json_encode($this->getLeavesDeatilsByHr) . "'"; ?> >
                 <div id="all_leaves" data-complete = <?php echo "'" . json_encode($this->getLeavesDeatils) . "'"; ?> >
-                    <?php if ($this->user_details[0]['designation'] == 'hr_manager') { ?>
+                    <?php if ($this->user_details[0]['designation'] == HR_MANAGER) { ?>
                         <!--            <div class="dashboard"><h4>Register New User <a href="#model_reg" class="modal_trigger6">Here</a></h4>
                                     <h4><a href="/emp_data">All employees area</a></h4>-->
                     <?php } ?>
                 </div>  
             </div>
         
-        <?php if ($this->user_details[0]['designation'] == 'hr_manager') { ?>
+        <?php if ($this->user_details[0]['designation'] == HR_MANAGER) { ?>
             <div class="dash_table">
                 <div class="overflow">
                     <div class="tbl-hdr"><h2>Leave Applications</h2></div>
@@ -61,8 +61,31 @@
                                 <td align="center"><?php echo $row[$i]['apply_date']; ?></td>
                                 <td align="center"><?php echo $row[$i]['manager_status']; ?></td>
                                 <td align="center"><?php echo $row[$i]['status']; ?></td>
+                                
+                                
+                                
+<!--                               <div id="<?php echo $i; ?>" class="popupContainer6 pop_cont" style="display:none;">
+                    <header class="popupHeader6">
+                        <span class="header_title">Leave application</span>
+                        <span class="modal_close"></span>
+                    </header>
+                    <section class="popupBody6">
+                        <p><i><b><?php echo $row[$i]['emp_name'];?></b><br/>Address:<br/>Employee code:</i></p>
+                        <p><i>Date: <?php echo $row[$i]['apply_date']; ?></i></p>
+                        <p><i>To:<br/>HR Department<br/>SADDAHAQ</i></p><br/>
+                        <p><b>SUB:</b><i><?php echo $row[$i]['subject']; ?></i></p>
+                        <p><i>Dear Sir,</i></p>
+                        <p><i><?php echo $row[$i]['description']; ?>......</i></p><br/>
+                        <p><i>Sincerely,<br/><?php echo $row[$i]['emp_name']; ?>.</i></p>
+                        <input type="hidden" id="lid" value="<?php echo $row[$i]['id'];?>">
+                        <button name="hr_status" value="Approved" class="btn-info btn-small hr_status">approve</button>
+                        <button name="hr_status" value="Rejected" class="btn-info btn-small hr_status">reject</button>
+                    </section>
+                </div>-->
+                                
+                                
                             </tr>
-
+                
 
     <?php } ?>
                     </table>
@@ -70,16 +93,12 @@
             </div>
             
 <?php } ?>
-
-
-<?php if ($this->user_details[0]['designation'] == 'Project_manager') { ?>
+<?php if ($this->user_details[0]['designation'] == PROJECT_MANAGER) { ?>
             <div class="dash_table">
                 <div class="overflow">
                     <div class="tbl-hdr"><h2>Leave Applications</h2></div>
                     <table class="table table-hover table-condensed table-bordered">
-                        
                         <tr>
-                            
                             <th>Name</th>
                             <th>Date</th>
                             <th>manager status</th>
@@ -94,6 +113,7 @@
                                 <td  align="center"><?php echo $row[$i]['manager_status']; ?></td>
 
                             </tr>
+                            
     <?php } ?>
                     </table>
                 </div>
@@ -103,7 +123,6 @@
         </div>
     </div>
         <!--success pop up's area-->
-
         <a id= "btn-trgr" href="#resp-popup" class="modal_trigger_status" hidden></a>
         <div id="resp-popup" class="popupContainer_status" style="display:none;">
             <header class="popupHeader7">
@@ -114,39 +133,34 @@
             <section class="popupBody"></section>
         </div>
         <!--success pop up area close-->
-
-
-        <!--Hr leave pop up area start-->    
+        <!--Hr leave pop up area start-->
         <div id="payslip-popup" class="popupContainer6 pop_cont" style="display:none;">
-            <header class="popupHeader6">
+                <header class="popupHeader6">
                 <span class="header_title">Leave application</span>
                 <span class="modal_close"></span>
-            </header>
-
-            <section class="popupBody6">
-                <div class="hr"><i>
-                        Address: <p id="hrlev-emp-addr"></p>
-                        Employee code: <p id="hrlev-emp-code"> </p>
-                        Date: <p id="hrlev-date"> </p>  
+               </header>
+               <section class="popupBody6">
+               <div class="hr"><i>
+                       Place : Hyderabad,<br>
+                       <p><span>Date:</span> <span id="hrlev-date"></span></p>  
 
                         To:<br>
                         HR Department <br>
-                        SADDAHAQ <br>
-                        <b>SUB:</b> <p id="hrlev-sub"></p>  
+                        SADDAHAQ <br><br>
+                        <span><b>SUB: </b><p id="hrlev-sub"></p></span>
                         Dear Sir,
                         <p id="hrlev-desc"></p>
                         Sincerely.,
-                        <p id="hrlev-emp-name"> </p>
+                        <b><p id="hrlev-emp-name"></p></b>
                     </i></div>
-                <button name="hr_status" value="Approved" class="btn-info btn-small hr_status">approve</button>
-                <button name="hr_status" value="Rejected" class="btn-info btn-small hr_status">reject</button>
-
+                <button name="hr_status" value="Rejected" class="btn btn-info lev-rejct-btn hr_status">Reject</button>
+                <button name="hr_status" value="Approved" class="btn btn-info lev-aprv-btn hr_status">Approve</button>
             </section>
         </div>
-        <!--Hr leave pop up area close-->
+     <!--Hr leave pop up area close-->
 
 
-        <!-manager leave pop up area -->
+        <!--manager leave pop up area--> 
         <div id="leave_manager" class="popupContainer6 pop_cont" style="display:none;">
             <header class="popupHeader6">
                 <span class="header_title">Leave application</span>
@@ -156,10 +170,9 @@
             <section class="popupBody6">
 
                 <div class="mngr"><i>
-                        Address: <p id="mngrlev-emp-addr"></p>
-                        Employee code: <p id="mngrlev-emp-code"> </p>
-                        Date: <p id="mngrlev-date"> </p>  
-
+                        Place : Hyderabad, 
+                        <p><span>Date:</span> <span id="mngrlev-date"></span></p>  
+                        
                         To:<br>
                         HR Department <br>
                         SADDAHAQ <br>
@@ -169,8 +182,8 @@
                         Sincerely.,
                         <p id="mngrlev-emp-name"> </p>
                     </i></div>
-                <button name="mngr_status" value="Approved" class="btn-info btn-small mngr_status">approve</button>
-                <button name="mngr_status" value="Rejected" class="btn-info btn-small mngr_status">reject</button>
+                <button name="mngr_status" value="Rejected" class="btn btn-info lev-rejct-btn mngr_status">Reject</button>
+                <button name="mngr_status" value="Approved" class="btn btn-info lev-aprv-btn mngr_status">Approve</button>
             </section>
         </div>
         <!--manager leave pop up area close-->
@@ -184,32 +197,25 @@
         var i = $(this).attr("id");
         var data = $("#all_leaves_hr").data('complete');
         data = data[i];
+        console.log(data[i]);
         $("#payslip-popup").data("lid", data['id']);
-        
-        // $("#payslip-popup").find("#hrlev-emp-addr").text(data['address']);
-        // $("#payslip-popup").find("#hrlev-emp-code").text(data['emp-code']);
+        $("#payslip-popup").find("#hrlev-emp-addr").text(data['address']);
+        $("#payslip-popup").find("#hrlev-emp-code").text(data['emp-code']);
         $("#payslip-popup").find("#hrlev-date").text(data['apply_date']);
         $("#payslip-popup").find("#hrlev-sub").text(data['subject'].split("\\sq").join("'"));
         $("#payslip-popup").find("#hrlev-desc").text(data['description'].split("\\sq").join("'"));
         $("#payslip-popup").find("#hrlev-emp-name").text(data['emp_name']);
-
-
     });
-
 
     $(".maneger-lev").click(function () {
         var i = $(this).attr("id");
         var data = $("#all_leaves").data('complete');
         data = data[i];
         $("#leave_manager").data("lid", data['id']);
-        
         $("#leave_manager").find("#mngrlev-date").text(data['apply_date']);
         $("#leave_manager").find("#mngrlev-sub").text(data['subject'].split("\\sq").join("'"));
         $("#leave_manager").find("#mngrlev-desc").text(data['description'].split("\\sq").join("'"));
         $("#leave_manager").find("#mngrlev-emp-name").text(data['emp_name']);
-
-
-
     });
 
 
@@ -227,6 +233,9 @@
                 $("#payslip-popup").css("display", "none");
                 $("#resp-popup").find(".popupBody").html(res);
                 $("#btn-trgr").trigger('click');
+                setTimeout(function () {
+                    window.location.reload();
+                }, 1500);
             }
         });
     });
@@ -245,6 +254,9 @@
                 $("#leave_manager").css("display", "none");
                 $("#resp-popup").find(".popupBody").html(res);
                 $("#btn-trgr").trigger('click');
+//                setTimeout(function () {
+//                    window.location.reload();
+//                }, 1500);
             }
         });
     });

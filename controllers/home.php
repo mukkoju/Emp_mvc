@@ -5,7 +5,7 @@ class Home extends Controller {
     function __construct() {
         parent::__construct();
 // saessions area
-        Session::init();
+//        Session::init();
         $logged = Session::get('loggedIn');
 
         if ($logged == false) {
@@ -61,5 +61,8 @@ public function bank_statement(){
 }
 public function get_statements(){
     echo json_encode($this->model->get_statements());
-}     
+}    
+public function profile_pic(){
+    echo $this->model->profile_pic($_SESSION['loggedIn']);
+}
 }

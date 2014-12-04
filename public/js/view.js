@@ -38,8 +38,6 @@ $(function () {
         var slctd_emp = [], obj;
 
         chkbxs.each(function () {
-
-
             if ($(this).prop('checked') == true) {
 //                if($(this).parents("tr").find('.mtnh-leavs').val() == '')
 //                $(this).addClass('.month-leavs_err');              
@@ -630,14 +628,44 @@ $(function () {
 //    });
 //});
      
+     
+    
+     
+     
      $('#upload-docs-butn').click(function(e){
          e.preventDefault();
+         var email = document.getElementById('emp-doc-emial').value;
+         var elements = $('#docs-form').find("input[type='file']");
+         var file_val = $('#docs-form').find("input[type='file']").value;
+         var reg;
+         reg = /^[a-zA-Z0-9_\+-]+(\.[A-Za-z0-9_\+-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.([A-Za-z]{2,4})$/;
+         if(!reg.test(email)){
+             $('#emp-doc-emial').addClass('month-leavs_err').val('').focus();
+             $('#emp-doc-emial').effect('shake', {
+                times: 2,
+                distance: 4
+            }, 300);
+             $('#upload-doc-err').text("Invalid email");
+             return false;
+         }
+         
         var formData = new FormData();
-        var files = document.getElementById('docs-file');
+        var i =1;
+    elements.each(function () {
+        var file_val = $('#docs-file'+i).val();
+         if(file_val == ''){
+        $('#emp-doc-emial').removeClass('month-leavs_err');
+        $('#upload-doc-err').text("Select Doc to upload");
+        $('#docs-file'+i).addClass('month-leavs_err').val('').focus();
+         }
+        var files = document.getElementById($(this).attr("id"));
+        var doc_type = $(this).siblings('.slct-month').find('option:selected').text();
         files = files.files;
-        alert(files);
-        formData.append("empdoc",files[0],files[0].name);
-        console.log(formData.append("empdoc",files[0],files[0].name));
+        formData.append($(this).attr("id"),files[0],files[0].name);
+        formData.append("doctype"+i,doc_type);
+        i++;
+    });
+    formData.append("eml", email);
         $.ajax({
             url: '/home/empdocs',
             method: 'POST',
@@ -645,14 +673,49 @@ $(function () {
             cache: false,
             contentType: false,
             processData: false,
+            beforeSend: function () {
+                $('body').leanModal({overlay: 0.2});
+                $('.ajax-loading').css({"position": "fixed", "top": "35%", "left": "45%"}).html('<img src ="/images/loading.gif" style="max-width: 50px;">');
+            },
             success: function (data) {
-                alert("Data uploaded");
+             $('#model_doc').hide();   
+             $("#resp-popup").find(".popupBody").html(data);
+             $("#btn-trgr").trigger('click');
+                setTimeout(function () {
+                window.location.reload();
+               }, 1500)
             }
         });
         return false; 
      });
      
+     var empdoc_upld = 1;
+     $('#pluse-doc').on('click', function(){
+         empdoc_upld++;
+         $('#upload-docs-butn').before("<label>Select Document:<br><input type='file' name = 'empdoc' id='docs-file"+empdoc_upld+"' style='display: inline-block;'><select class='slct-month'><option value='' selected>--Select Doc type--</option><option value='1'>10th</option><option value='2'>Bachelor</option><option value='3'>Experience</option><option value='4'>Address</option><option value='4'>Other</option></select><a href='#'  class='minus-doc'><i class='icon-minus-sign'></i></a></label>");
+     });
      
+     $('#docs-form').on('click', '.minus-doc', function(){
+        $(this).parents("label").remove();
+     });
      
+     $('.profile-img-change-input').change(function(){
+         var formData = new FormData();
+         var files = document.getElementById('p-pic-change');
+         files = files.files;
+         formData.append('p-pic-change', files[0],files[0].name);
+         $.ajax({
+            url: '/home/profile_pic',
+            method: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                $('.profile_img').find('img').attr('src', data);
+//                $('.profile_img').find('img').html(data);
+            }
+        });
+     });
 });
 
